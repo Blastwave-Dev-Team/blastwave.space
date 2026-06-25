@@ -4,8 +4,20 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "import": "tsx import.ts",
-    "import:dry-run": "tsx import.ts --dry-run"
+    "wiki": "tsx cli.ts",
+    "wiki:import": "tsx cli.ts import markdown --source=tgstation13",
+    "wiki:import:dry-run": "tsx cli.ts import markdown --source=tgstation13 --dry-run",
+    "wiki:import-html": "tsx cli.ts import html --source=novasector13",
+    "wiki:import-html:dry-run": "tsx cli.ts import html --source=novasector13 --dry-run",
+    "wiki:scrape-images": "tsx cli.ts images scrape --source=novasector13",
+    "wiki:scrape-images:dry-run": "tsx cli.ts images scrape --source=novasector13 --dry-run",
+    "wiki:reimport": "tsx cli.ts reimport --source=novasector13",
+    "wiki:reimport:dry-run": "tsx cli.ts reimport --source=novasector13 --dry-run",
+    "wiki:fix-links": "tsx cli.ts fix links",
+    "wiki:fix-links:dry-run": "tsx cli.ts fix links --dry-run",
+    "wiki:update-descriptions": "tsx cli.ts fix descriptions",
+    "wiki:update-descriptions:dry-run": "tsx cli.ts fix descriptions --dry-run",
+    "wiki:deploy-theme": "tsx cli.ts deploy theme"
   },
   "dependencies": {
     "turndown": "^7.2.0"

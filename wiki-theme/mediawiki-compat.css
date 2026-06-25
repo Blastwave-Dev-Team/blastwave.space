@@ -1,0 +1,447 @@
+/* MediaWiki HTML compatibility — uses tokens from inject.css / book.css :root */
+
+.contents .mw-parser-output,
+.page-contents .mw-parser-output,
+article .mw-parser-output,
+.mw-parser-output {
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.contents .mw-parser-output h2,
+.page-contents .mw-parser-output h2,
+article .mw-parser-output h2,
+.mw-parser-output h2 {
+  color: var(--neon-magenta);
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.contents .mw-parser-output h3,
+.contents .mw-parser-output h4,
+.page-contents .mw-parser-output h3,
+.page-contents .mw-parser-output h4,
+article .mw-parser-output h3,
+article .mw-parser-output h4,
+.mw-parser-output h3,
+.mw-parser-output h4 {
+  color: var(--neon-amber);
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Horizontal scroll wrapper added by Wiki.js */
+.table-container {
+  overflow-x: auto;
+  margin: 1em 0;
+  border: 1px solid rgba(0, 229, 255, 0.12);
+  border-radius: 2px;
+}
+
+/* ── Wikitable: beat ALL inline MediaWiki light-theme styles ── */
+.contents table.wikitable,
+.page-contents table.wikitable,
+article table.wikitable,
+.mw-parser-output table.wikitable,
+.mw-parser-output .wikitable {
+  width: 100% !important;
+  margin: 0 !important;
+  border-collapse: collapse !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border: 1px solid rgba(0, 229, 255, 0.22) !important;
+  color: var(--text-primary) !important;
+}
+
+.contents .wikitable th,
+.contents .wikitable td,
+.page-contents .wikitable th,
+.page-contents .wikitable td,
+article .wikitable th,
+article .wikitable td,
+.mw-parser-output .wikitable th,
+.mw-parser-output .wikitable td {
+  border: 1px solid rgba(168, 173, 191, 0.18) !important;
+  padding: 8px 10px !important;
+  vertical-align: top !important;
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+}
+
+/* Column header row */
+.contents .wikitable > tbody > tr:first-child > th,
+.page-contents .wikitable > tbody > tr:first-child > th,
+article .wikitable > tbody > tr:first-child > th,
+.mw-parser-output .wikitable > tbody > tr:first-child > th {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  color: var(--neon-amber) !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  text-align: left !important;
+}
+
+/* Row header cells (reagent names) */
+.contents .wikitable > tbody > tr:not(:first-child) > th,
+.page-contents .wikitable > tbody > tr:not(:first-child) > th,
+article .wikitable > tbody > tr:not(:first-child) > th,
+.mw-parser-output .wikitable > tbody > tr:not(:first-child) > th {
+  background: rgba(10, 12, 22, 0.92) !important;
+  background-color: rgba(10, 12, 22, 0.92) !important;
+  color: var(--neon-cyan) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+  text-transform: none !important;
+  min-width: 9rem;
+}
+
+/* Subtext under reagent names */
+.mw-parser-output .wikitable > tbody > tr:not(:first-child) > th p {
+  color: var(--text-muted) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.86em !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  margin: 0.35em 0 0 !important;
+  line-height: 1.45 !important;
+}
+
+.mw-parser-output .wikitable > tbody > tr:not(:first-child) > th p a {
+  color: var(--neon-cyan) !important;
+}
+
+/* Zebra striping on data cells only */
+.mw-parser-output .wikitable > tbody > tr:nth-child(even) > td {
+  background: rgba(10, 12, 22, 0.55) !important;
+  background-color: rgba(10, 12, 22, 0.55) !important;
+}
+
+.mw-parser-output .wikitable > tbody > tr:nth-child(odd) > td {
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+}
+
+.mw-parser-output .wikitable.sortable > tbody > tr:first-child > th {
+  cursor: pointer;
+}
+
+.mw-parser-output .wikitable.sortable > tbody > tr:first-child > th:hover {
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+}
+
+/* Links and labels inside tables */
+.mw-parser-output .wikitable a {
+  color: var(--neon-cyan) !important;
+  text-decoration-color: rgba(0, 229, 255, 0.4) !important;
+}
+
+.mw-parser-output .wikitable a:hover {
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output .wikitable b,
+.mw-parser-output .wikitable strong {
+  color: var(--neon-amber) !important;
+  font-weight: 700;
+}
+
+.mw-parser-output .wikitable p {
+  margin: 0.35em 0 !important;
+  color: inherit !important;
+}
+
+/* Reagent color swatches — keep inline color, fix white background */
+.mw-parser-output .wikitable span[style*='background-color:white'],
+.mw-parser-output .wikitable span[style*='background-color: white'],
+.mw-parser-output .wikitable span[style*='background-color:#FFF'],
+.mw-parser-output .wikitable span[style*='background-color: #FFF'] {
+  background-color: var(--panel-solid) !important;
+  padding: 0 2px;
+  border-radius: 1px;
+}
+
+/* ── Recipe tooltips ── */
+.mw-parser-output .tooltip {
+  position: relative;
+  display: inline;
+  cursor: help;
+  border-bottom: 1px dotted rgba(0, 229, 255, 0.5);
+}
+
+.mw-parser-output div.tooltip {
+  display: inline;
+}
+
+.mw-parser-output .tooltip > a {
+  color: var(--neon-cyan) !important;
+}
+
+/* Hidden by default — direct-child popup only on hover */
+.mw-parser-output .tooltip > .tooltiptext,
+.mw-parser-output div.tooltip > div.tooltiptext {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  z-index: 300;
+  left: 0 !important;
+  top: calc(100% + 4px) !important;
+  min-width: 14rem;
+  max-width: 26rem;
+  padding: 0.55em 0.75em !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.28) !important;
+  border-radius: 3px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(0, 229, 255, 0.1) !important;
+  color: var(--text-primary) !important;
+  font-size: 0.88rem !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+  white-space: normal;
+}
+
+.mw-parser-output .tooltip > .tooltiptext p,
+.mw-parser-output div.tooltip > div.tooltiptext p {
+  color: var(--text-primary) !important;
+  margin: 0.25em 0 !important;
+}
+
+.mw-parser-output .tooltip:hover > .tooltiptext,
+.mw-parser-output div.tooltip:hover > div.tooltiptext,
+.mw-parser-output .tooltip:focus-within > .tooltiptext,
+.mw-parser-output div.tooltip:focus-within > div.tooltiptext {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto;
+}
+
+/* Nested ingredient tooltips inside an open popup */
+.mw-parser-output .tooltiptext .tooltiptext {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.mw-parser-output .tooltiptext .tooltip {
+  position: relative;
+  display: inline;
+}
+
+.mw-parser-output .tooltiptext .tooltip:hover > .tooltiptext,
+.mw-parser-output .tooltiptext div.tooltip:hover > div.tooltiptext {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: calc(100% + 2px) !important;
+  pointer-events: auto;
+}
+
+/* Hide edit section remnants Wiki.js may surface in headings */
+.mw-editsection,
+.mw-editsection-divider,
+.mw-editsection-bracket,
+.toc-header .mw-editsection-divider,
+.toc-header .mw-editsection-bracket {
+  display: none !important;
+}
+
+.toc-header .toc-anchor {
+  display: none;
+}
+
+/* ── Collapsible sections (details, converted on import) ── */
+.mw-parser-output details.mw-collapsible {
+  margin: 1em 0;
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  background: rgba(10, 12, 22, 0.92) !important;
+  background-color: rgba(10, 12, 22, 0.92) !important;
+  border-radius: 3px;
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output .wikitable details.mw-collapsible {
+  margin: 0.5em 0 0;
+}
+
+.mw-parser-output details.mw-collapsible summary {
+  cursor: pointer;
+  padding: 0.55em 0.85em;
+  list-style: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+}
+
+.mw-parser-output details.mw-collapsible summary .collapsible-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--neon-cyan) !important;
+}
+
+.mw-parser-output details.mw-collapsible summary .collapsible-desc {
+  display: block;
+  margin: 0.35em 0 0;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--text-muted) !important;
+  line-height: 1.5;
+}
+
+.mw-parser-output details.mw-collapsible summary .collapsible-desc a {
+  color: var(--neon-cyan) !important;
+}
+
+.mw-parser-output details.mw-collapsible summary .collapsible-desc strong,
+.mw-parser-output details.mw-collapsible summary .collapsible-desc b {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.mw-parser-output details.mw-collapsible summary::-webkit-details-marker {
+  display: none;
+}
+
+.mw-parser-output details.mw-collapsible summary::before {
+  content: '▸ ';
+  color: var(--neon-magenta);
+}
+
+.mw-parser-output details.mw-collapsible[open] summary::before {
+  content: '▾ ';
+}
+
+.mw-parser-output details.mw-collapsible[open] summary {
+  border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+}
+
+.mw-parser-output details.mw-collapsible .mw-collapsible-content {
+  padding: 0.45em 0.85em 0.75em;
+  background: rgba(10, 12, 22, 0.92) !important;
+  background-color: rgba(10, 12, 22, 0.92) !important;
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output details.mw-collapsible .mw-collapsible-content table,
+.mw-parser-output details.mw-collapsible .mw-collapsible-content table.wikitable {
+  margin: 0.5em 0 0 !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+}
+
+.mw-parser-output details.mw-collapsible .mw-collapsible-content td,
+.mw-parser-output details.mw-collapsible .mw-collapsible-content th {
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output details.mw-collapsible .mw-collapsible-content a {
+  color: var(--neon-cyan) !important;
+}
+
+.mw-parser-output details.mw-collapsible .mw-collapsible-content a {
+  color: var(--neon-cyan) !important;
+}
+
+/* Legacy MediaWiki collapsible divs (toccolours = light bg in Vector skin) */
+.mw-parser-output div.toccolours,
+.mw-parser-output div.mw-collapsible:not(details) {
+  margin: 1em 0;
+  padding: 0.55em 0.85em;
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  background: rgba(10, 12, 22, 0.65) !important;
+  background-color: rgba(10, 12, 22, 0.65) !important;
+  border-radius: 3px;
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output div.mw-collapsible:not(details) .mw-collapsible-content {
+  padding-top: 0.45em;
+  margin-top: 0.45em;
+  border-top: 1px solid rgba(0, 229, 255, 0.12);
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output div.mw-collapsible:not(details) p,
+.mw-parser-output div.mw-collapsible:not(details) li,
+.mw-parser-output div.mw-collapsible:not(details) .mw-collapsible-content a {
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output div.mw-collapsible:not(details) .mw-collapsible-content a {
+  color: var(--neon-cyan) !important;
+}
+
+/* No MediaWiki JS — don't hide collapsed content inside div fallbacks */
+.mw-parser-output div.mw-collapsible.mw-collapsed .mw-collapsible-content {
+  display: block !important;
+}
+
+/* Catch-all: nuke remaining inline light backgrounds inside parser output */
+.mw-parser-output [style*='background-color:white'],
+.mw-parser-output [style*='background-color: white'],
+.mw-parser-output [style*='background-color:#FFF'],
+.mw-parser-output [style*='background-color: #FFF'],
+.mw-parser-output [style*='background-color:#fff'],
+.mw-parser-output [style*='background: #FFF'],
+.mw-parser-output [style*='background:#FFF'],
+.mw-parser-output [style*='background: #F7F7FF'],
+.mw-parser-output [style*='background:#F7F7FF'],
+.mw-parser-output [style*='background-color:#F7F7FF'],
+.mw-parser-output [style*='background-color: #F7F7FF'] {
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+}
+
+.mw-parser-output .toccolours {
+  background: rgba(10, 12, 22, 0.65) !important;
+  background-color: rgba(10, 12, 22, 0.65) !important;
+}
+
+/* Re-apply row-header and tooltip backgrounds after catch-all */
+.mw-parser-output .wikitable > tbody > tr:first-child > th[style] {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+}
+
+.mw-parser-output .wikitable > tbody > tr:not(:first-child) > th[style] {
+  background: rgba(10, 12, 22, 0.92) !important;
+  background-color: rgba(10, 12, 22, 0.92) !important;
+}
+
+.mw-parser-output .tooltip .tooltiptext[style],
+.mw-parser-output div.tooltip > div.tooltiptext[style] {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  color: var(--text-primary) !important;
+  display: none !important;
+}
+
+.mw-parser-output .tooltip:hover > .tooltiptext[style],
+.mw-parser-output div.tooltip:hover > div.tooltiptext[style] {
+  display: block !important;
+}

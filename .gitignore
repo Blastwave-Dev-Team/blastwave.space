@@ -30,3 +30,4 @@ public/assets/bg-source.mp4
 infra/.env
 book-proxy/node_modules
 scripts/import-mediawiki/node_modules
+.env

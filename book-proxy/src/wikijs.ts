@@ -2,6 +2,7 @@ export type WikiPage = {
   title: string;
   render: string;
   updatedAt: string;
+  tags: string[];
 };
 
 export type WikiClientConfig = {
@@ -17,15 +18,23 @@ const PAGE_QUERY = `
         title
         render
         updatedAt
+        tags { tag }
       }
     }
   }
 `;
 
+type GraphqlPage = {
+  title: string;
+  render: string;
+  updatedAt: string;
+  tags?: Array<{ tag: string }>;
+};
+
 type GraphqlResponse = {
   data?: {
     pages?: {
-      singleByPath?: WikiPage | null;
+      singleByPath?: GraphqlPage | null;
     };
   };
   errors?: Array<{ message: string }>;
@@ -57,6 +66,14 @@ export class WikiClient {
       throw new Error(payload.errors.map((e) => e.message).join('; '));
     }
 
-    return payload.data?.pages?.singleByPath ?? null;
+    const page = payload.data?.pages?.singleByPath;
+    if (!page) return null;
+
+    return {
+      title: page.title,
+      render: page.render,
+      updatedAt: page.updatedAt,
+      tags: page.tags?.map((entry) => entry.tag) ?? [],
+    };
   }
 }

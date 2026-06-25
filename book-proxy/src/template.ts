@@ -2,18 +2,29 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import escapeHtml from 'escape-html';
+import {
+  extractMaintenanceReason,
+  renderMaintenanceBannersHtml,
+} from './maintenance-banners.js';
+import { convertCollapsibleBlocks } from './collapsible.js';
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 const assetsDir = join(currentDir, '..', 'assets');
-const bookCss = readFileSync(join(assetsDir, 'book.css'), 'utf8');
+const bookCss =
+  readFileSync(join(assetsDir, 'book.css'), 'utf8') +
+  readFileSync(join(assetsDir, 'mediawiki-compat.css'), 'utf8') +
+  readFileSync(join(assetsDir, 'maintenance-banners.css'), 'utf8');
 
 const FONT_LINK =
   '<link rel="preconnect" href="https://fonts.googleapis.com">' +
   '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
   '<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">';
 
-export function renderBookPage(title: string, content: string): string {
+export function renderBookPage(title: string, content: string, tags: string[] = []): string {
   const safeTitle = escapeHtml(title);
+  const transformed = convertCollapsibleBlocks(content);
+  const reason = extractMaintenanceReason(transformed);
+  const banners = renderMaintenanceBannersHtml(tags, reason);
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -24,8 +35,10 @@ export function renderBookPage(title: string, content: string): string {
   <style>${bookCss}</style>
 </head>
 <body>
-  <h1>${safeTitle}</h1>
-  ${content}
+  <article class="book-page">
+    <h1 class="book-title">${safeTitle}</h1>
+    <div class="mw-parser-output">${banners}${transformed}</div>
+  </article>
 </body>
 </html>`;
 }

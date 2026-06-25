@@ -14,5 +14,5 @@
    ```bash
    cd scripts/import-mediawiki
    npm install
-   WIKIJS_GRAPHQL_URL=https://wiki.blastwave.space/graphql WIKIJS_API_KEY=... npm run import
+   WIKIJS_GRAPHQL_URL=https://wiki.blastwave.space/graphql WIKIJS_API_KEY=... npm run wiki:import
    ```

@@ -1,0 +1,82 @@
+/* Maintenance banners — injected by maintenance-banners.js from page tags */
+
+.wiki-maintenance-banners {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+
+.wiki-maintenance-banner {
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 229, 255, 0.22);
+  background: rgba(10, 12, 22, 0.92);
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.08);
+}
+
+.wiki-maintenance-banner__title {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display, 'Rajdhani', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neon-cyan, #00e5ff);
+}
+
+.wiki-maintenance-banner__body {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-primary, #e8eaf0);
+}
+
+.wiki-maintenance-banner__reason {
+  margin: 0.55rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-muted, #a8adbf);
+}
+
+.wiki-maintenance-banner__reason strong {
+  color: var(--neon-amber, #ffb020);
+  font-weight: 700;
+}
+
+.wiki-maintenance-banner[data-tone='muted'] {
+  border-color: rgba(168, 173, 191, 0.28);
+}
+
+.wiki-maintenance-banner[data-tone='muted'] .wiki-maintenance-banner__title {
+  color: var(--text-muted, #a8adbf);
+}
+
+.wiki-maintenance-banner[data-tone='warning'] {
+  border-color: rgba(255, 176, 32, 0.35);
+  box-shadow: 0 0 18px rgba(255, 176, 32, 0.1);
+}
+
+.wiki-maintenance-banner[data-tone='warning'] .wiki-maintenance-banner__title {
+  color: var(--neon-amber, #ffb020);
+}
+
+.wiki-maintenance-banner[data-tone='danger'] {
+  border-color: rgba(255, 45, 168, 0.35);
+  box-shadow: 0 0 18px rgba(255, 45, 168, 0.1);
+}
+
+.wiki-maintenance-banner[data-tone='danger'] .wiki-maintenance-banner__title {
+  color: var(--neon-magenta, #ff2da8);
+}
+
+.wiki-maintenance-banner[data-tone='info'] .wiki-maintenance-banner__title {
+  color: var(--neon-cyan, #00e5ff);
+}
+
+/* Optional reason source in page body — shown in banner, hidden inline */
+.contents .wiki-maintenance-reason,
+.page-contents .wiki-maintenance-reason,
+.mw-parser-output .wiki-maintenance-reason {
+  display: none !important;
+}

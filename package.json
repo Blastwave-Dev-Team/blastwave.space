@@ -11,8 +11,8 @@
     "preview": "vite preview",
     "book-proxy:dev": "npm run dev --prefix book-proxy",
     "book-proxy:build": "npm run build --prefix book-proxy",
-    "wiki:import": "npm run import --prefix scripts/import-mediawiki",
-    "wiki:import:dry-run": "npm run import:dry-run --prefix scripts/import-mediawiki",
+    "wiki:import": "npm run wiki:import --prefix scripts/import-mediawiki",
+    "wiki:import:dry-run": "npm run wiki:import:dry-run --prefix scripts/import-mediawiki",
     "prepare:assets": "curl -L -o public/assets/bg-source.mp4 https://files.catbox.moe/zheel0.mp4 && ffmpeg -y -i public/assets/bg-source.mp4 -t 20 -vf scale=1280:-2 -c:v libvpx-vp9 -crf 35 -b:v 0 -an public/assets/bg.webm && ffmpeg -y -i public/assets/bg-source.mp4 -ss 00:00:01 -vframes 1 -vf scale=1280:-2 public/assets/bg-poster.webp && rm -f public/assets/bg-source.mp4"
   },
   "dependencies": {

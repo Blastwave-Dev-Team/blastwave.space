@@ -11,7 +11,6 @@
   --neon-amber: #ffb020;
   --font-display: 'Rajdhani', 'Segoe UI', sans-serif;
   --font-body: 'Atkinson Hyperlegible', 'Segoe UI', sans-serif;
-  --content-max: 960px;
   --focus-ring: 2px solid var(--neon-cyan);
   --focus-offset: 3px;
 }
@@ -65,16 +64,6 @@ a:focus {
 
 .contents,
 .page-contents,
-.page-content,
-.contents-content,
-.v-content__wrap > .container,
-main .container,
-article {
-  max-width: var(--content-max);
-}
-
-.contents,
-.page-contents,
 .contents-content,
 .v-card,
 .v-sheet,
@@ -92,7 +81,15 @@ article {
 .page-contents,
 .contents-content {
   border-radius: 8px;
-  padding: 1.75rem 2rem;
+  padding: 1.75rem 2rem !important;
+}
+
+.contents .contents-content,
+.page-contents .page-contents-main {
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 .sidebar,
@@ -122,6 +119,159 @@ article {
 .v-list__tile:hover {
   color: var(--neon-cyan) !important;
   background: rgba(0, 229, 255, 0.08) !important;
+}
+
+/* ── Page sidebar (TOC, tags, share/print toolbar) ── */
+.page-col-sd .v-card,
+.page-col-sd .page-toc-card,
+.page-col-sd .page-tags-card,
+.page-col-sd .page-comments-card,
+.page-col-sd .page-author-card,
+.page-col-sd .page-shortcuts-card {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.08) !important;
+}
+
+.page-col-sd .page-shortcuts-card {
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+.page-col-sd .v-toolbar,
+.page-col-sd .v-sheet.v-toolbar,
+.page-col-sd .v-toolbar.grey.lighten-3,
+.page-col-sd .v-toolbar.theme--light,
+.page-col-sd .grey.lighten-3.v-toolbar {
+  color: var(--text-primary) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.page-col-sd .page-shortcuts-card .v-toolbar {
+  border-radius: 0 !important;
+}
+
+.page-col-sd .v-toolbar .v-icon {
+  color: var(--text-muted) !important;
+}
+
+.page-col-sd .v-toolbar .v-btn:hover .v-icon {
+  color: var(--neon-cyan) !important;
+}
+
+/* Breadcrumb toolbar — Wiki.js nests v-toolbar as main > div > header (grey lighten-3) */
+.v-main header.v-toolbar,
+.v-main .v-main__wrap > header,
+.v-main > div > header,
+main.v-main > div > header,
+.v-main header.grey.lighten-3,
+.v-main header.v-toolbar.grey.lighten-3,
+.v-main header.v-toolbar.theme--light,
+.v-main > .v-toolbar,
+.v-main > .v-toolbar.grey.lighten-3,
+.v-main > .v-toolbar.theme--light,
+.v-main > .grey.lighten-3.v-toolbar {
+  color: var(--text-muted) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.14) !important;
+  border-color: rgba(0, 229, 255, 0.14) !important;
+  box-shadow: none !important;
+}
+
+.v-main header.v-toolbar .v-toolbar__content,
+.v-main > div > header .v-toolbar__content {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.v-main .breadcrumbs-nav,
+.v-main .breadcrumbs-nav .v-breadcrumbs__item,
+.v-main .breadcrumbs-nav .v-breadcrumbs__divider,
+.v-main .breadcrumbs-nav .v-btn,
+.v-main .breadcrumbs-nav .v-btn__content {
+  color: var(--text-muted) !important;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+.v-main .breadcrumbs-nav .v-btn:hover,
+.v-main .breadcrumbs-nav .v-btn:hover .v-btn__content,
+.v-main .breadcrumbs-nav a:hover {
+  color: var(--neon-cyan) !important;
+}
+
+.v-main .breadcrumbs-nav .v-icon {
+  color: var(--text-muted) !important;
+}
+
+.v-main .breadcrumbs-nav .v-icon:hover,
+.v-main .breadcrumbs-nav .v-btn:hover .v-icon {
+  color: var(--neon-cyan) !important;
+}
+
+.v-main > .v-divider,
+.v-main > hr.v-divider {
+  border-color: rgba(0, 229, 255, 0.14) !important;
+}
+
+.page-col-sd .overline.primary--text,
+.page-col-sd .overline.blue--text {
+  color: var(--neon-cyan) !important;
+}
+
+.page-col-sd .overline.teal--text,
+.page-col-sd .overline.indigo--text {
+  color: var(--neon-magenta) !important;
+}
+
+.page-col-sd .v-list,
+.page-col-sd .v-list.theme--light {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.page-col-sd .v-list-item,
+.page-col-sd .v-list-item__title {
+  color: var(--text-muted) !important;
+}
+
+.page-col-sd .v-list-item:hover,
+.page-col-sd .v-list-item:hover .v-list-item__title {
+  color: var(--neon-cyan) !important;
+}
+
+.page-col-sd .v-list-item:hover {
+  background: rgba(0, 229, 255, 0.08) !important;
+}
+
+.page-col-sd .v-list-item .v-icon {
+  color: var(--text-muted) !important;
+}
+
+.page-col-sd .page-author-card-name,
+.page-col-sd .page-author-card-date,
+.page-col-sd .blue-grey--text,
+.page-col-sd .grey--text {
+  color: var(--text-muted) !important;
+}
+
+.page-col-sd .v-chip.teal.lighten-5,
+.page-col-sd .v-chip.teal {
+  background: rgba(0, 229, 255, 0.12) !important;
+  background-color: rgba(0, 229, 255, 0.12) !important;
+  border: 1px solid rgba(0, 229, 255, 0.22) !important;
+}
+
+.page-col-sd .v-chip .teal--text {
+  color: var(--neon-cyan) !important;
 }
 
 .contents h1,
@@ -161,6 +311,31 @@ article h1 {
   color: var(--neon-cyan);
   border-bottom: 1px solid rgba(0, 229, 255, 0.22);
   text-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+}
+
+/* Wiki.js page header uses .headline / .caption instead of h1 */
+.page-header-headings .headline,
+.page-header-section .headline,
+.page-col-content.is-page-header .headline,
+.headline.grey--text.text--darken-3,
+.headline.grey--text.text--lighten-2 {
+  color: var(--neon-cyan) !important;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+}
+
+.page-header-headings .caption,
+.page-header-section .caption,
+.page-col-content.is-page-header .caption,
+.page-header-headings .caption.grey--text.text--darken-1,
+.page-header-section .caption.grey--text.text--darken-1 {
+  color: var(--text-muted) !important;
+  font-family: var(--font-body);
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 .contents h2,
@@ -236,16 +411,97 @@ pre code,
   border: 0;
 }
 
+/* Blockquotes — beat Wiki.js .v-main .contents blockquote (blue-grey-50 bg) */
+.v-main .contents blockquote,
+.contents blockquote,
+.page-contents blockquote,
+.mw-parser-output blockquote,
+article blockquote,
 blockquote {
-  color: var(--text-muted);
-  background: var(--panel);
-  border-left: 3px solid var(--neon-cyan);
-  border-radius: 0 4px 4px 0;
+  color: var(--text-primary) !important;
+  background: rgba(10, 12, 22, 0.92) !important;
+  background-color: rgba(10, 12, 22, 0.92) !important;
+  border: 0 !important;
+  border-left: 3px solid var(--neon-cyan) !important;
+  border-radius: 0 4px 4px 0 !important;
+  padding: 0.85rem 1rem !important;
+  margin: 1rem 0 !important;
+  box-shadow: none !important;
+}
+
+.v-main .contents blockquote::before,
+.contents blockquote::before,
+.page-contents blockquote::before,
+.mw-parser-output blockquote::before {
+  display: none !important;
+  content: none !important;
+}
+
+.v-main .contents blockquote p,
+.contents blockquote p,
+.page-contents blockquote p,
+.mw-parser-output blockquote p,
+blockquote p {
+  color: var(--text-primary) !important;
+}
+
+.v-main .contents blockquote strong,
+.contents blockquote strong,
+.page-contents blockquote strong,
+.mw-parser-output blockquote strong,
+blockquote strong,
+.v-main .contents blockquote b,
+.contents blockquote b,
+.page-contents blockquote b,
+.mw-parser-output blockquote b,
+blockquote b {
+  color: var(--neon-cyan);
+}
+
+.v-main .contents blockquote.is-info,
+.contents blockquote.is-info,
+.page-contents blockquote.is-info,
+.mw-parser-output blockquote.is-info {
+  background: rgba(0, 229, 255, 0.1) !important;
+  background-color: rgba(0, 229, 255, 0.1) !important;
+  border-left-color: var(--neon-cyan) !important;
+  color: var(--text-primary) !important;
+}
+
+.v-main .contents blockquote.is-warning,
+.contents blockquote.is-warning,
+.page-contents blockquote.is-warning,
+.mw-parser-output blockquote.is-warning {
+  background: rgba(255, 176, 32, 0.1) !important;
+  background-color: rgba(255, 176, 32, 0.1) !important;
+  border-left-color: var(--neon-amber) !important;
+  color: var(--text-primary) !important;
+}
+
+.v-main .contents blockquote.is-danger,
+.contents blockquote.is-danger,
+.page-contents blockquote.is-danger,
+.mw-parser-output blockquote.is-danger {
+  background: rgba(255, 45, 168, 0.1) !important;
+  background-color: rgba(255, 45, 168, 0.1) !important;
+  border-left-color: var(--neon-magenta) !important;
+  color: var(--text-primary) !important;
+}
+
+.v-main .contents blockquote.is-success,
+.contents blockquote.is-success,
+.page-contents blockquote.is-success,
+.mw-parser-output blockquote.is-success {
+  background: rgba(0, 229, 255, 0.08) !important;
+  background-color: rgba(0, 229, 255, 0.08) !important;
+  border-left-color: var(--neon-cyan) !important;
+  color: var(--text-primary) !important;
 }
 
 table {
   color: var(--text-primary);
-  background: var(--panel);
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
   border: 1px solid rgba(0, 229, 255, 0.18);
   border-collapse: collapse;
 }
@@ -256,16 +512,21 @@ th {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: var(--panel-solid);
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
   border: 1px solid rgba(0, 229, 255, 0.14);
 }
 
 td {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
   border: 1px solid rgba(168, 173, 191, 0.16);
 }
 
 tr:nth-child(even) td {
-  background: rgba(10, 12, 22, 0.55);
+  background: rgba(10, 12, 22, 0.55) !important;
+  background-color: rgba(10, 12, 22, 0.55) !important;
 }
 
 hr {
@@ -358,6 +619,16 @@ select,
   border: 1px solid rgba(0, 229, 255, 0.18) !important;
 }
 
+.search-results-items .highlighted {
+  color: var(--neon-amber) !important;
+  background: rgba(255, 176, 32, 0.16) !important;
+  background-color: rgba(255, 176, 32, 0.16) !important;
+  background-image: none !important;
+  border-radius: 2px;
+  padding: 0 1px;
+  box-shadow: inset 0 -1px 0 rgba(255, 176, 32, 0.45);
+}
+
 .v-menu__content,
 .v-dialog {
   box-shadow: 0 0 32px rgba(0, 229, 255, 0.12) !important;
@@ -400,11 +671,565 @@ footer,
   background: var(--neon-cyan);
 }
 
+/* ── Page comments / discussion ── */
 .comments-container,
-.page-comments,
-.comment-container,
-.v-card.comments,
-#page-comments,
-.comments {
+.page-comments {
+  margin-top: 2rem;
+  padding: 1.75rem 2rem !important;
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+  border-radius: 8px;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.08) !important;
+}
+
+.comments-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neon-cyan) !important;
+}
+
+.comments-header .v-icon {
+  color: var(--neon-cyan) !important;
+}
+
+.comments-container .comments-main,
+.comments-main {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.comments-main,
+.comments-main .caption,
+.comments-main .body-2 {
+  color: var(--text-muted) !important;
+}
+
+.comments-main strong {
+  color: var(--text-primary) !important;
+}
+
+.comments-container .v-divider,
+.comments-container hr.v-divider {
+  border-color: rgba(168, 173, 191, 0.22) !important;
+}
+
+.comments-container .blue-grey--text,
+.comments-container .theme--light.blue-grey--text {
+  color: var(--text-muted) !important;
+}
+
+.comments-container .v-input__slot.white,
+.comments-container .theme--light .v-input__slot,
+.comments-container .v-text-field--solo-flat .v-input__slot {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+}
+
+.comments-container textarea,
+.comments-container .v-textarea textarea {
+  color: var(--text-primary) !important;
+  caret-color: var(--neon-cyan);
+}
+
+.comments-container textarea::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.85;
+}
+
+.comments-container .v-text-field--outlined fieldset {
+  border-color: rgba(0, 229, 255, 0.18) !important;
+}
+
+.comments-container .v-btn.blue-grey.darken-2,
+.comments-container .v-btn.theme--dark.blue-grey {
+  color: var(--bg-deep) !important;
+  background: var(--neon-cyan) !important;
+  background-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.25) !important;
+}
+
+.comments-container .v-btn.blue-grey.darken-2 .v-icon,
+.comments-container .v-btn.theme--dark.blue-grey .v-icon {
+  color: var(--bg-deep) !important;
+}
+
+.comments-container .comment,
+.comments-container .comment-card,
+.comments-container .comments-list .v-card {
+  color: var(--text-primary) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.12) !important;
+  border-radius: 4px;
+}
+
+.comments-container .comment .caption,
+.comments-container .comment-card .caption {
+  color: var(--text-muted) !important;
+}
+
+.comments-container .comment a,
+.comments-container .comment-card a {
+  color: var(--neon-cyan) !important;
+}
+
+.comments-container .comment blockquote,
+.comments-container .comment-card blockquote {
+  color: var(--text-muted);
+  background: rgba(10, 12, 22, 0.65);
+  border-left-color: var(--neon-cyan);
+}
+
+/* MediaWiki HTML imports — see mediawiki-compat.css */
+
+/* MediaWiki HTML compatibility — uses tokens from inject.css / book.css :root */
+
+.contents .mw-parser-output,
+.page-contents .mw-parser-output,
+article .mw-parser-output,
+.mw-parser-output {
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.contents .mw-parser-output h2,
+.page-contents .mw-parser-output h2,
+article .mw-parser-output h2,
+.mw-parser-output h2 {
+  color: var(--neon-magenta);
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.contents .mw-parser-output h3,
+.contents .mw-parser-output h4,
+.page-contents .mw-parser-output h3,
+.page-contents .mw-parser-output h4,
+article .mw-parser-output h3,
+article .mw-parser-output h4,
+.mw-parser-output h3,
+.mw-parser-output h4 {
+  color: var(--neon-amber);
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Horizontal scroll wrapper added by Wiki.js */
+.table-container {
+  overflow-x: auto;
+  margin: 1em 0;
+  border: 1px solid rgba(0, 229, 255, 0.12);
+  border-radius: 2px;
+}
+
+/* ── Wikitable: beat ALL inline MediaWiki light-theme styles ── */
+.contents table.wikitable,
+.page-contents table.wikitable,
+article table.wikitable,
+.mw-parser-output table.wikitable,
+.mw-parser-output .wikitable {
+  width: 100% !important;
+  margin: 0 !important;
+  border-collapse: collapse !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border: 1px solid rgba(0, 229, 255, 0.22) !important;
+  color: var(--text-primary) !important;
+}
+
+.contents .wikitable th,
+.contents .wikitable td,
+.page-contents .wikitable th,
+.page-contents .wikitable td,
+article .wikitable th,
+article .wikitable td,
+.mw-parser-output .wikitable th,
+.mw-parser-output .wikitable td {
+  border: 1px solid rgba(168, 173, 191, 0.18) !important;
+  padding: 8px 10px !important;
+  vertical-align: top !important;
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+}
+
+/* Column header row */
+.contents .wikitable > tbody > tr:first-child > th,
+.page-contents .wikitable > tbody > tr:first-child > th,
+article .wikitable > tbody > tr:first-child > th,
+.mw-parser-output .wikitable > tbody > tr:first-child > th {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  color: var(--neon-amber) !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  text-align: left !important;
+}
+
+/* Row header cells (reagent names) */
+.contents .wikitable > tbody > tr:not(:first-child) > th,
+.page-contents .wikitable > tbody > tr:not(:first-child) > th,
+article .wikitable > tbody > tr:not(:first-child) > th,
+.mw-parser-output .wikitable > tbody > tr:not(:first-child) > th {
+  background: rgba(10, 12, 22, 0.92) !important;
+  background-color: rgba(10, 12, 22, 0.92) !important;
+  color: var(--neon-cyan) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+  text-transform: none !important;
+  min-width: 9rem;
+}
+
+/* Subtext under reagent names */
+.mw-parser-output .wikitable > tbody > tr:not(:first-child) > th p {
+  color: var(--text-muted) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.86em !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  margin: 0.35em 0 0 !important;
+  line-height: 1.45 !important;
+}
+
+.mw-parser-output .wikitable > tbody > tr:not(:first-child) > th p a {
+  color: var(--neon-cyan) !important;
+}
+
+/* Zebra striping on data cells only */
+.mw-parser-output .wikitable > tbody > tr:nth-child(even) > td {
+  background: rgba(10, 12, 22, 0.55) !important;
+  background-color: rgba(10, 12, 22, 0.55) !important;
+}
+
+.mw-parser-output .wikitable > tbody > tr:nth-child(odd) > td {
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+}
+
+.mw-parser-output .wikitable.sortable > tbody > tr:first-child > th {
+  cursor: pointer;
+}
+
+.mw-parser-output .wikitable.sortable > tbody > tr:first-child > th:hover {
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+}
+
+/* Links and labels inside tables */
+.mw-parser-output .wikitable a {
+  color: var(--neon-cyan) !important;
+  text-decoration-color: rgba(0, 229, 255, 0.4) !important;
+}
+
+.mw-parser-output .wikitable a:hover {
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output .wikitable b,
+.mw-parser-output .wikitable strong {
+  color: var(--neon-amber) !important;
+  font-weight: 700;
+}
+
+.mw-parser-output .wikitable p {
+  margin: 0.35em 0 !important;
+  color: inherit !important;
+}
+
+/* Reagent color swatches — keep inline color, fix white background */
+.mw-parser-output .wikitable span[style*='background-color:white'],
+.mw-parser-output .wikitable span[style*='background-color: white'],
+.mw-parser-output .wikitable span[style*='background-color:#FFF'],
+.mw-parser-output .wikitable span[style*='background-color: #FFF'] {
+  background-color: var(--panel-solid) !important;
+  padding: 0 2px;
+  border-radius: 1px;
+}
+
+/* ── Recipe tooltips ── */
+.mw-parser-output .tooltip {
+  position: relative;
+  display: inline;
+  cursor: help;
+  border-bottom: 1px dotted rgba(0, 229, 255, 0.5);
+}
+
+.mw-parser-output div.tooltip {
+  display: inline;
+}
+
+.mw-parser-output .tooltip > a {
+  color: var(--neon-cyan) !important;
+}
+
+/* Hidden by default — direct-child popup only on hover */
+.mw-parser-output .tooltip > .tooltiptext,
+.mw-parser-output div.tooltip > div.tooltiptext {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  z-index: 300;
+  left: 0 !important;
+  top: calc(100% + 4px) !important;
+  min-width: 14rem;
+  max-width: 26rem;
+  padding: 0.55em 0.75em !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.28) !important;
+  border-radius: 3px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(0, 229, 255, 0.1) !important;
+  color: var(--text-primary) !important;
+  font-size: 0.88rem !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+  white-space: normal;
+}
+
+.mw-parser-output .tooltip > .tooltiptext p,
+.mw-parser-output div.tooltip > div.tooltiptext p {
+  color: var(--text-primary) !important;
+  margin: 0.25em 0 !important;
+}
+
+.mw-parser-output .tooltip:hover > .tooltiptext,
+.mw-parser-output div.tooltip:hover > div.tooltiptext,
+.mw-parser-output .tooltip:focus-within > .tooltiptext,
+.mw-parser-output div.tooltip:focus-within > div.tooltiptext {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto;
+}
+
+/* Nested ingredient tooltips inside an open popup */
+.mw-parser-output .tooltiptext .tooltiptext {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.mw-parser-output .tooltiptext .tooltip {
+  position: relative;
+  display: inline;
+}
+
+.mw-parser-output .tooltiptext .tooltip:hover > .tooltiptext,
+.mw-parser-output .tooltiptext div.tooltip:hover > div.tooltiptext {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: calc(100% + 2px) !important;
+  pointer-events: auto;
+}
+
+/* Hide edit section remnants Wiki.js may surface in headings */
+.mw-editsection,
+.mw-editsection-divider,
+.mw-editsection-bracket,
+.toc-header .mw-editsection-divider,
+.toc-header .mw-editsection-bracket {
+  display: none !important;
+}
+
+/* ── Collapsible sections (details, converted on import) ── */
+.mw-parser-output details.mw-collapsible {
+  margin: 1em 0;
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  background: rgba(10, 12, 22, 0.92) !important;
+  background-color: rgba(10, 12, 22, 0.92) !important;
+  border-radius: 3px;
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output .wikitable details.mw-collapsible {
+  margin: 0.5em 0 0;
+}
+
+.mw-parser-output details.mw-collapsible summary {
+  cursor: pointer;
+  padding: 0.55em 0.85em;
+  list-style: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+}
+
+.mw-parser-output details.mw-collapsible summary .collapsible-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--neon-cyan) !important;
+}
+
+.mw-parser-output details.mw-collapsible summary .collapsible-desc {
+  display: block;
+  margin: 0.35em 0 0;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--text-muted) !important;
+  line-height: 1.5;
+}
+
+.mw-parser-output details.mw-collapsible summary .collapsible-desc a {
+  color: var(--neon-cyan) !important;
+}
+
+.mw-parser-output details.mw-collapsible summary .collapsible-desc strong,
+.mw-parser-output details.mw-collapsible summary .collapsible-desc b {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.mw-parser-output details.mw-collapsible summary::-webkit-details-marker {
+  display: none;
+}
+
+.mw-parser-output details.mw-collapsible summary::before {
+  content: '▸ ';
+  color: var(--neon-magenta);
+}
+
+.mw-parser-output details.mw-collapsible[open] summary::before {
+  content: '▾ ';
+}
+
+.mw-parser-output details.mw-collapsible[open] summary {
+  border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+}
+
+.mw-parser-output details.mw-collapsible .mw-collapsible-content {
+  padding: 0.45em 0.85em 0.75em;
+  background: rgba(10, 12, 22, 0.92) !important;
+  background-color: rgba(10, 12, 22, 0.92) !important;
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output details.mw-collapsible .mw-collapsible-content table,
+.mw-parser-output details.mw-collapsible .mw-collapsible-content table.wikitable {
+  margin: 0.5em 0 0 !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+}
+
+.mw-parser-output details.mw-collapsible .mw-collapsible-content td,
+.mw-parser-output details.mw-collapsible .mw-collapsible-content th {
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output details.mw-collapsible .mw-collapsible-content a {
+  color: var(--neon-cyan) !important;
+}
+
+.mw-parser-output details.mw-collapsible .mw-collapsible-content a {
+  color: var(--neon-cyan) !important;
+}
+
+/* Legacy MediaWiki collapsible divs (toccolours = light bg in Vector skin) */
+.mw-parser-output div.toccolours,
+.mw-parser-output div.mw-collapsible:not(details) {
+  margin: 1em 0;
+  padding: 0.55em 0.85em;
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  background: rgba(10, 12, 22, 0.65) !important;
+  background-color: rgba(10, 12, 22, 0.65) !important;
+  border-radius: 3px;
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output div.mw-collapsible:not(details) .mw-collapsible-content {
+  padding-top: 0.45em;
+  margin-top: 0.45em;
+  border-top: 1px solid rgba(0, 229, 255, 0.12);
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output div.mw-collapsible:not(details) p,
+.mw-parser-output div.mw-collapsible:not(details) li,
+.mw-parser-output div.mw-collapsible:not(details) .mw-collapsible-content a {
+  color: var(--text-primary) !important;
+}
+
+.mw-parser-output div.mw-collapsible:not(details) .mw-collapsible-content a {
+  color: var(--neon-cyan) !important;
+}
+
+/* No MediaWiki JS — don't hide collapsed content inside div fallbacks */
+.mw-parser-output div.mw-collapsible.mw-collapsed .mw-collapsible-content {
+  display: block !important;
+}
+
+/* Catch-all: nuke remaining inline light backgrounds inside parser output */
+.mw-parser-output [style*='background-color:white'],
+.mw-parser-output [style*='background-color: white'],
+.mw-parser-output [style*='background-color:#FFF'],
+.mw-parser-output [style*='background-color: #FFF'],
+.mw-parser-output [style*='background-color:#fff'],
+.mw-parser-output [style*='background: #FFF'],
+.mw-parser-output [style*='background:#FFF'],
+.mw-parser-output [style*='background: #F7F7FF'],
+.mw-parser-output [style*='background:#F7F7FF'],
+.mw-parser-output [style*='background-color:#F7F7FF'],
+.mw-parser-output [style*='background-color: #F7F7FF'] {
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+}
+
+.mw-parser-output .toccolours {
+  background: rgba(10, 12, 22, 0.65) !important;
+  background-color: rgba(10, 12, 22, 0.65) !important;
+}
+
+/* Re-apply row-header and tooltip backgrounds after catch-all */
+.mw-parser-output .wikitable > tbody > tr:first-child > th[style] {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+}
+
+.mw-parser-output .wikitable > tbody > tr:not(:first-child) > th[style] {
+  background: rgba(10, 12, 22, 0.92) !important;
+  background-color: rgba(10, 12, 22, 0.92) !important;
+}
+
+.mw-parser-output .tooltip .tooltiptext[style],
+.mw-parser-output div.tooltip > div.tooltiptext[style] {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  color: var(--text-primary) !important;
+  display: none !important;
+}
+
+.mw-parser-output .tooltip:hover > .tooltiptext[style],
+.mw-parser-output div.tooltip:hover > div.tooltiptext[style] {
+  display: block !important;
 }

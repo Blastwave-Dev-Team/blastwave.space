@@ -6,16 +6,16 @@ import { SiteHeader } from './SiteHeader';
 import { VideoBackground } from './VideoBackground';
 
 export function SiteLayout() {
-  const { hash } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    if (!hash) {
-      return;
+    if (hash) {
+      const target = document.querySelector(hash);
+      target?.scrollIntoView({ behavior: 'instant', block: 'start' });
+    } else {
+      window.scrollTo(0, 0);
     }
-
-    const target = document.querySelector(hash);
-    target?.scrollIntoView({ behavior: 'instant', block: 'start' });
-  }, [hash]);
+  }, [pathname, hash]);
 
   return (
     <div className={styles.page}>
