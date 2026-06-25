@@ -23,7 +23,7 @@ export const LORE_SECTIONS: LoreSection[] = [
     content: [
       'The station operates near Tulimaa, commonly called Lavaland.',
       'Tulimaa is a harsh volcanic world once considered mostly barren. It was useful to NT mainly for mining, research, and survey work.',
-      'The Blastwave Incident changed everything, and the resulting blast ravaged the surface of Tulimaa and tore open its crust.',
+      'The Blastwave Incident changed everything, and the resulting wave of devastation ravaged the surface of Tulimaa and tore open its crust.',
       'Beneath the rock and ash were vast magma caverns, hostile ecosystems, unusual mineral formations, and signs of life that earlier surveys had missed.',
     ],
   },
