@@ -1,0 +1,9 @@
+# Add these DNS records at your domain registrar (A records → droplet public IPv4).
+#
+# Type  Name   Value
+# A     @      <DROPLET_IP>
+# A     www    <DROPLET_IP>
+# A     wiki   <DROPLET_IP>
+# A     book   <DROPLET_IP>
+#
+# After propagation, run: CERTBOT_EMAIL=you@example.com sudo infra/scripts/setup-ssl.sh

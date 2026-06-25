@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@600;700&display=swap');
+
+:root {
+  --bg-deep: #07080f;
+  --panel: rgba(10, 12, 22, 0.92);
+  --panel-solid: #0a0c16;
+  --text-primary: #e8eaf0;
+  --text-muted: #a8adbf;
+  --neon-cyan: #00e5ff;
+  --neon-magenta: #ff2da8;
+  --neon-amber: #ffb020;
+  --font-display: 'Rajdhani', 'Segoe UI', sans-serif;
+  --font-body: 'Atkinson Hyperlegible', 'Segoe UI', sans-serif;
+  --content-max: 960px;
+  --focus-ring: 2px solid var(--neon-cyan);
+  --focus-offset: 3px;
+}
+
+html {
+  background: var(--bg-deep);
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(0, 229, 255, 0.12), transparent 28rem),
+    radial-gradient(circle at 82% 18%, rgba(255, 45, 168, 0.12), transparent 30rem),
+    linear-gradient(180deg, rgba(7, 8, 15, 0.94), var(--bg-deep));
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+.application,
+.application--wrap,
+.v-application,
+.v-application--wrap,
+.layout,
+.page-container,
+.contents,
+.theme--dark.application,
+.container.grey,
+.container.grey.lighten-4,
+.grey.lighten-4 {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+a {
+  color: var(--neon-cyan);
+  text-decoration-color: rgba(0, 229, 255, 0.45);
+}
+
+a:hover,
+a:focus {
+  color: var(--text-primary);
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+.contents,
+.page-contents,
+.page-content,
+.contents-content,
+.v-content__wrap > .container,
+main .container,
+article {
+  max-width: var(--content-max);
+}
+
+.contents,
+.page-contents,
+.contents-content,
+.v-card,
+.v-sheet,
+.v-list,
+.theme--dark.v-card,
+.theme--dark.v-sheet,
+.theme--dark.v-list {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.08) !important;
+}
+
+.contents,
+.page-contents,
+.contents-content {
+  border-radius: 8px;
+  padding: 1.75rem 2rem;
+}
+
+.sidebar,
+.toc,
+.page-tree,
+.navigation,
+.v-navigation-drawer,
+.theme--dark.v-navigation-drawer {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  border-right: 1px solid rgba(0, 229, 255, 0.18) !important;
+}
+
+.v-navigation-drawer .v-list-item,
+.v-list-item,
+.v-list-item__title,
+.v-list-item__subtitle,
+.v-list__tile,
+.v-list__tile__title {
+  color: var(--text-muted) !important;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+.v-navigation-drawer .v-list-item:hover,
+.v-list-item:hover,
+.v-list__tile:hover {
+  color: var(--neon-cyan) !important;
+  background: rgba(0, 229, 255, 0.08) !important;
+}
+
+.contents h1,
+.contents h2,
+.contents h3,
+.contents h4,
+.contents h5,
+.contents h6,
+.page-contents h1,
+.page-contents h2,
+.page-contents h3,
+.page-contents h4,
+.page-contents h5,
+.page-contents h6,
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4,
+.markdown-section h5,
+.markdown-section h6,
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.contents h1,
+.page-contents h1,
+.markdown-section h1,
+article h1 {
+  color: var(--neon-cyan);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.22);
+  text-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+}
+
+.contents h2,
+.page-contents h2,
+.markdown-section h2,
+article h2 {
+  color: var(--neon-magenta);
+  text-shadow: 0 0 14px rgba(255, 45, 168, 0.18);
+}
+
+.contents h3,
+.page-contents h3,
+.markdown-section h3,
+article h3 {
+  color: var(--neon-amber);
+}
+
+.contents p,
+.contents li,
+.contents td,
+.contents th,
+.page-contents p,
+.page-contents li,
+.page-contents td,
+.page-contents th,
+.markdown-section p,
+.markdown-section li,
+.markdown-section td,
+.markdown-section th,
+article p,
+article li,
+article td,
+article th {
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.65;
+}
+
+.caption,
+.text--secondary,
+.v-card__subtitle,
+.v-list-item__subtitle,
+.page-author,
+.page-updated {
+  color: var(--text-muted) !important;
+}
+
+code,
+kbd,
+.v-application code,
+.v-application kbd {
+  color: var(--neon-amber);
+  background: var(--panel-solid);
+  border: 1px solid rgba(168, 173, 191, 0.18);
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+pre,
+.prismjs,
+.line-numbers,
+.code-toolbar pre {
+  color: var(--text-primary);
+  background: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.16);
+  border-radius: 4px;
+}
+
+pre code,
+.prismjs code {
+  color: inherit;
+  background: transparent;
+  border: 0;
+}
+
+blockquote {
+  color: var(--text-muted);
+  background: var(--panel);
+  border-left: 3px solid var(--neon-cyan);
+  border-radius: 0 4px 4px 0;
+}
+
+table {
+  color: var(--text-primary);
+  background: var(--panel);
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  border-collapse: collapse;
+}
+
+th {
+  color: var(--neon-cyan);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--panel-solid);
+  border: 1px solid rgba(0, 229, 255, 0.14);
+}
+
+td {
+  border: 1px solid rgba(168, 173, 191, 0.16);
+}
+
+tr:nth-child(even) td {
+  background: rgba(10, 12, 22, 0.55);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid rgba(168, 173, 191, 0.22);
+}
+
+.v-btn,
+button,
+input[type='button'],
+input[type='submit'] {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+
+.v-btn.primary,
+.v-btn.info,
+.v-btn--depressed.primary,
+.v-btn--contained.primary,
+.primary {
+  color: var(--bg-deep) !important;
+  background: var(--neon-cyan) !important;
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.25) !important;
+}
+
+.v-btn.secondary,
+.v-btn.accent,
+.accent {
+  color: var(--text-primary) !important;
+  background: rgba(255, 45, 168, 0.18) !important;
+  border-color: rgba(255, 45, 168, 0.45) !important;
+}
+
+.v-btn:hover,
+button:hover {
+  filter: brightness(1.08);
+}
+
+input,
+textarea,
+select,
+.v-input,
+.v-input__slot,
+.v-text-field__slot,
+.v-select__slot,
+.v-textarea textarea,
+.theme--dark.v-input input,
+.theme--dark.v-input textarea {
+  color: var(--text-primary) !important;
+}
+
+.v-input__slot,
+.v-text-field--solo > .v-input__control > .v-input__slot,
+.v-text-field--outlined fieldset {
+  background: var(--panel-solid) !important;
+  border-color: rgba(0, 229, 255, 0.18) !important;
+}
+
+.v-input--is-focused .v-input__slot,
+.v-input--is-focused fieldset,
+.v-text-field--focused fieldset {
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.35);
+}
+
+.v-label,
+.v-messages,
+.v-input__icon,
+.v-icon {
+  color: var(--text-muted) !important;
+}
+
+.v-input--is-focused .v-label,
+.v-input--is-focused .v-icon {
+  color: var(--neon-cyan) !important;
+}
+
+.search,
+.search-input,
+.search-results,
+.v-autocomplete,
+.v-menu__content,
+.v-dialog,
+.v-dialog .v-card {
+  color: var(--text-primary) !important;
+  background: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+}
+
+.v-menu__content,
+.v-dialog {
+  box-shadow: 0 0 32px rgba(0, 229, 255, 0.12) !important;
+}
+
+.v-alert {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  border-left: 3px solid var(--neon-amber) !important;
+}
+
+.v-alert.info {
+  border-left-color: var(--neon-cyan) !important;
+}
+
+.v-alert.warning,
+.v-alert.error {
+  border-left-color: var(--neon-magenta) !important;
+}
+
+.footer,
+footer,
+.page-footer,
+.v-footer,
+.v-footer.grey,
+.v-footer.grey.lighten-3,
+.v-footer.theme--light {
+  color: var(--text-muted) !important;
+  background: rgba(7, 8, 15, 0.88) !important;
+  border-top: 1px solid rgba(0, 229, 255, 0.18) !important;
+}
+
+.v-footer a,
+.v-footer .caption {
+  color: var(--text-muted) !important;
+}
+
+::selection {
+  color: var(--bg-deep);
+  background: var(--neon-cyan);
+}
+
+.comments-container,
+.page-comments,
+.comment-container,
+.v-card.comments,
+#page-comments,
+.comments {
+  display: none !important;
+}

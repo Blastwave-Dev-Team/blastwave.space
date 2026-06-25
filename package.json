@@ -1,0 +1,39 @@
+{
+  "name": "blastwave-website",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Static site for blastwave.space. Build: npm run build (output dist/). Deploy dist/ to Cloudflare Pages or nginx. Custom domain via public/CNAME.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "book-proxy:dev": "npm run dev --prefix book-proxy",
+    "book-proxy:build": "npm run build --prefix book-proxy",
+    "wiki:import": "npm run import --prefix scripts/import-mediawiki",
+    "wiki:import:dry-run": "npm run import:dry-run --prefix scripts/import-mediawiki",
+    "prepare:assets": "curl -L -o public/assets/bg-source.mp4 https://files.catbox.moe/zheel0.mp4 && ffmpeg -y -i public/assets/bg-source.mp4 -t 20 -vf scale=1280:-2 -c:v libvpx-vp9 -crf 35 -b:v 0 -an public/assets/bg.webm && ffmpeg -y -i public/assets/bg-source.mp4 -ss 00:00:01 -vframes 1 -vf scale=1280:-2 public/assets/bg-poster.webp && rm -f public/assets/bg-source.mp4"
+  },
+  "dependencies": {
+    "@fontsource/atkinson-hyperlegible": "^5.2.8",
+    "@fontsource/rajdhani": "^5.2.7",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.18.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^6.4.3"
+  }
+}
