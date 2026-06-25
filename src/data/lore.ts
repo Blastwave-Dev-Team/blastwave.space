@@ -40,8 +40,8 @@ export const LORE_SECTIONS: LoreSection[] = [
     id: 'solfed',
     title: 'Sol Federation',
     content: [
-      'Sol Federation oversight is present.',
-      'The scale of the Blastwave Incident made the region more than a normal corporate holding. SolFed has stationed a cruiser nearby and assigned a federal delegate aboard Redline.',
+      'Sol Federation oversight is present, and persistent, given the scale of the Blastwave Incident.',
+      'The sheer scale of the stellar event made the region more than a normal corporate holding, and SolFed has stationed a cruiser nearby and assigned a federal delegate aboard Redline to oversee the situation.',
     ],
   },
 ];
