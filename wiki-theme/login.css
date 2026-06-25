@@ -1,0 +1,337 @@
+/* Blastwave login theme — injected on wiki auth pages via nginx (Wiki.js skips injectCSS on /login). */
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@600;700&display=swap');
+
+:root {
+  --bg-deep: #07080f;
+  --panel: rgba(10, 12, 22, 0.92);
+  --panel-solid: #0a0c16;
+  --text-primary: #e8eaf0;
+  --text-muted: #a8adbf;
+  --neon-cyan: #00e5ff;
+  --neon-magenta: #ff2da8;
+  --neon-amber: #ffb020;
+  --font-display: 'Rajdhani', 'Segoe UI', sans-serif;
+  --font-body: 'Atkinson Hyperlegible', 'Segoe UI', sans-serif;
+  --focus-ring: 2px solid var(--neon-cyan);
+  --focus-offset: 3px;
+}
+
+html,
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--bg-deep);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+.login {
+  position: relative;
+  background-color: var(--bg-deep) !important;
+}
+
+.login::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(0, 229, 255, 0.12), transparent 28rem),
+    radial-gradient(circle at 82% 18%, rgba(255, 45, 168, 0.12), transparent 30rem),
+    linear-gradient(180deg, rgba(7, 8, 15, 0.68), rgba(7, 8, 15, 0.9));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.login-sd {
+  position: relative;
+  z-index: 1;
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 1px solid rgba(0, 229, 255, 0.22) !important;
+  border-right: 1px solid rgba(0, 229, 255, 0.22) !important;
+  box-shadow: 0 0 48px rgba(0, 229, 255, 0.1) !important;
+}
+
+.login-logo {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.12);
+}
+
+.login-title {
+  text-shadow: none !important;
+  color: var(--text-primary) !important;
+}
+
+/* Beat Vuetify runtime .theme--light .grey--text.text--darken-4 (injected after head styles) */
+#app.v-application.theme--light .login-sd .d-flex.mb-5 .login-title > div,
+#app.v-application .login-sd .login-title > div.text-h6.grey--text.text--darken-4,
+.v-application .login .login-title > div,
+.login-sd .login-title > div,
+.login-title > div,
+.login-title div,
+.login-title .text-h6,
+.login-title .grey--text,
+.login-title .text--darken-4,
+.login-title [class*='grey--text'],
+.login-title [class*='text--darken'] {
+  color: #e8eaf0 !important;
+  -webkit-text-fill-color: #e8eaf0 !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  text-shadow: none !important;
+}
+
+.login-subtitle {
+  color: var(--neon-cyan) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  background-image: none !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.18) !important;
+  text-shadow: none !important;
+}
+
+.login-subtitle .text-subtitle-1 {
+  color: var(--neon-cyan) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+
+.login-info {
+  color: var(--text-muted) !important;
+  background: rgba(10, 12, 22, 0.55) !important;
+  background-color: rgba(10, 12, 22, 0.55) !important;
+  border-top-color: rgba(0, 229, 255, 0.14) !important;
+  border-bottom-color: rgba(0, 229, 255, 0.14) !important;
+}
+
+.login-list,
+.login-form {
+  border-top-color: rgba(0, 229, 255, 0.18) !important;
+}
+
+.login-list .v-list,
+.login-list .v-list.elevation-1,
+.login-list .v-list.theme--light {
+  color: var(--text-primary) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.08) !important;
+}
+
+.login-list .v-list-item,
+.login-list .v-list-item__title,
+.login-list .v-list-item__content {
+  color: var(--text-muted) !important;
+  font-family: var(--font-display) !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Provider name — Vuetify applies strategy color classes (e.g. indigo--text) on the row + span */
+.login-list .v-list-item span,
+.login-list .v-list-item .text-none {
+  color: var(--text-primary) !important;
+}
+
+.login-list .v-list-item[class*='--text'],
+.login-list .v-list-item[class*='--text'] span,
+.login-list .v-list-item.text--lighten-2,
+.login-list .v-list-item.text--lighten-2 span,
+.login-list .v-list-item.theme--light span {
+  color: var(--text-primary) !important;
+}
+
+.login-list .v-list-item--active,
+.login-list .v-list-item--active .v-list-item__title,
+.login-list .v-list-item--active span,
+.login-list .v-list-item--active .text-none,
+.login-list .v-list-item--active[class*='--text'],
+.login-list .v-list-item--active[class*='--text'] span,
+.login-list .v-list-item:hover,
+.login-list .v-list-item:hover .v-list-item__title,
+.login-list .v-list-item:hover span {
+  color: var(--neon-cyan) !important;
+  background: rgba(0, 229, 255, 0.08) !important;
+  background-color: rgba(0, 229, 255, 0.08) !important;
+}
+
+.login-list .v-list-item--active.indigo,
+.login-list .v-list-item--active.blue,
+.login-list .v-list-item--active.primary {
+  background: rgba(0, 229, 255, 0.12) !important;
+  background-color: rgba(0, 229, 255, 0.12) !important;
+}
+
+.login-form .v-text-field .v-input__slot,
+.login-form .v-text-field.theme--light .v-input__slot,
+.login-form .v-text-field--solo > .v-input__control > .v-input__slot {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+  box-shadow: none !important;
+}
+
+.login-form .v-text-field.v-input--is-focused .v-input__slot {
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.35) !important;
+}
+
+.login-form input,
+.login-form .v-text-field input,
+.login-form .v-text-field textarea {
+  color: var(--text-primary) !important;
+  caret-color: var(--neon-cyan);
+}
+
+.login-form input::placeholder,
+.login-form .v-text-field input::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.75;
+}
+
+.login-form .v-input__icon .v-icon,
+.login-form .v-text-field .v-icon {
+  color: var(--text-muted) !important;
+}
+
+.login-form .v-input--is-focused .v-icon {
+  color: var(--neon-cyan) !important;
+}
+
+.login .v-btn.blue.darken-2,
+.login .v-btn.blue.darken-2.theme--dark,
+.login .v-btn[class*='blue'].darken-2 {
+  color: var(--bg-deep) !important;
+  background: var(--neon-cyan) !important;
+  background-color: var(--neon-cyan) !important;
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.25) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+
+.login .v-btn.grey.darken-3,
+.login .v-btn.text.rounded.grey.darken-3 {
+  color: var(--neon-cyan) !important;
+}
+
+.login .v-btn.grey.darken-3:hover,
+.login .v-btn.text.rounded.grey.darken-3:hover {
+  color: var(--text-primary) !important;
+  background: rgba(0, 229, 255, 0.08) !important;
+}
+
+.login .v-btn.indigo.darken-2,
+.login .v-btn.text.rounded.indigo.darken-2 {
+  color: var(--neon-magenta) !important;
+}
+
+.login .v-btn.indigo.darken-2:hover,
+.login .v-btn.text.rounded.indigo.darken-2:hover {
+  color: var(--text-primary) !important;
+  background: rgba(255, 45, 168, 0.1) !important;
+}
+
+.login .v-btn .caption {
+  color: inherit !important;
+}
+
+.login-form .text-center.mt-5 .v-btn,
+.login-form .text-center.mt-5 .v-btn__content,
+.login-form .text-center.mt-5 a,
+.login-form .text-center.mt-5 a span,
+.login-form .text-center.mt-5 a span div,
+.login-form .text-center.mt-5 .caption,
+.login-form .text-center.mt-5 .v-btn .caption,
+.login-form .text-center.mt-5 .v-btn.grey--text,
+.login-form .text-center.mt-5 .v-btn[class*='grey'] .v-btn__content,
+.login-form .text-center.mt-5 .v-btn[class*='grey'] .v-btn__content * {
+  color: var(--neon-cyan) !important;
+}
+
+.login-form .text-center.mt-5 .v-btn[class*='indigo'] .v-btn__content,
+.login-form .text-center.mt-5 .v-btn[class*='indigo'] .v-btn__content *,
+.login-form .text-center.mt-5 .v-btn.indigo--text .caption {
+  color: var(--neon-magenta) !important;
+}
+
+.login-form .text-center.mt-5 .v-btn:hover .v-btn__content,
+.login-form .text-center.mt-5 .v-btn:hover .v-btn__content *,
+.login-form .text-center.mt-5 a:hover span div {
+  color: var(--text-primary) !important;
+}
+
+.login .v-alert.red.darken-2,
+.login .v-alert.red.darken-2.theme--dark {
+  color: var(--text-primary) !important;
+  background: rgba(255, 45, 168, 0.15) !important;
+  background-color: rgba(255, 45, 168, 0.15) !important;
+  border-left: 3px solid var(--neon-magenta) !important;
+}
+
+.login .v-alert .v-icon {
+  color: var(--neon-magenta) !important;
+}
+
+.login-tfa {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border: 1px solid rgba(0, 229, 255, 0.22) !important;
+}
+
+.login-tfa .subtitle-1.primary--text,
+.login-tfa .primary--text {
+  color: var(--neon-cyan) !important;
+}
+
+.login-tfa .grey--text,
+.login-tfa .text--darken-3,
+.login-tfa .subtitle-2 {
+  color: var(--text-muted) !important;
+}
+
+.login-tfa-field .v-input__slot,
+.login-tfa-field.v-text-field--solo > .v-input__control > .v-input__slot {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+}
+
+.login-tfa-field input {
+  color: var(--text-primary) !important;
+  caret-color: var(--neon-cyan);
+}
+
+.login-tfa-qr {
+  background: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+}
+
+.login .v-dialog .v-card {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+}
+
+.login .v-divider {
+  border-color: rgba(0, 229, 255, 0.14) !important;
+}

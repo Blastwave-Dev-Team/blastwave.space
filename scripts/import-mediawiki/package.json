@@ -17,7 +17,9 @@
     "wiki:fix-links:dry-run": "tsx cli.ts fix links --dry-run",
     "wiki:update-descriptions": "tsx cli.ts fix descriptions",
     "wiki:update-descriptions:dry-run": "tsx cli.ts fix descriptions --dry-run",
-    "wiki:deploy-theme": "tsx cli.ts deploy theme"
+    "wiki:deploy-theme": "tsx cli.ts deploy theme",
+    "wiki:setup-player": "tsx cli.ts groups setup-player",
+    "wiki:setup-player:dry-run": "tsx cli.ts groups setup-player --dry-run"
   },
   "dependencies": {
     "turndown": "^7.2.0"

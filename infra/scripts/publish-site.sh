@@ -9,4 +9,5 @@ cd "${REPO_ROOT}"
 npm ci
 npm run build
 rsync -av --delete dist/ /var/www/blastwave/
+rsync -av wiki-theme/ /var/www/blastwave/wiki-theme/
 echo "Published blastwave-website to /var/www/blastwave"

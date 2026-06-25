@@ -16,6 +16,37 @@ export type CreatePageInput = {
   tags: string[];
 };
 
+export type PageRuleMatch = 'START' | 'EXACT' | 'END' | 'REGEX' | 'TAG';
+
+export type PageRuleInput = {
+  id: string;
+  deny: boolean;
+  match: PageRuleMatch;
+  roles: string[];
+  path: string;
+  locales: string[];
+};
+
+export type WikiJsGroupInfo = {
+  id: number;
+  name: string;
+  isSystem: boolean;
+};
+
+export type WikiJsGroup = WikiJsGroupInfo & {
+  permissions: string[];
+  pageRules: PageRuleInput[];
+  redirectOnLogin: string | null;
+};
+
+export type UpdateGroupInput = {
+  id: number;
+  name: string;
+  redirectOnLogin: string;
+  permissions: string[];
+  pageRules: PageRuleInput[];
+};
+
 export type WikiJsClientOptions = {
   graphqlUrl: string;
   apiKey: string;
@@ -120,16 +151,24 @@ export class WikiJsClient {
   }
 
   async findPageByPath(path: string, locale: string): Promise<number | null> {
-    const data = await this.graphql<{
-      pages: { singleByPath: { id: number } | null };
-    }>(
-      `query FindPage($path: String!, $locale: String!) {
-        pages { singleByPath(path: $path, locale: $locale) { id } }
-      }`,
-      { path, locale },
-    );
+    try {
+      const data = await this.graphql<{
+        pages: { singleByPath: { id: number } | null };
+      }>(
+        `query FindPage($path: String!, $locale: String!) {
+          pages { singleByPath(path: $path, locale: $locale) { id } }
+        }`,
+        { path, locale },
+      );
 
-    return data.pages.singleByPath?.id ?? null;
+      return data.pages.singleByPath?.id ?? null;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      if (message.toLowerCase().includes('does not exist')) {
+        return null;
+      }
+      throw error;
+    }
   }
 
   async createPage(input: CreatePageInput): Promise<{ id: number; path: string }> {
@@ -250,6 +289,112 @@ export class WikiJsClient {
     const result = data.pages.flushCache.responseResult;
     if (!result.succeeded) {
       throw new Error(result.message ?? 'Cache flush failed');
+    }
+  }
+
+  async listGroups(): Promise<WikiJsGroupInfo[]> {
+    const data = await this.graphql<{ groups: { list: WikiJsGroupInfo[] } }>(
+      `query {
+        groups {
+          list {
+            id
+            name
+            isSystem
+          }
+        }
+      }`,
+    );
+    return data.groups.list;
+  }
+
+  async getGroup(id: number): Promise<WikiJsGroup> {
+    const data = await this.graphql<{ groups: { single: WikiJsGroup } }>(
+      `query GetGroup($id: Int!) {
+        groups {
+          single(id: $id) {
+            id
+            name
+            isSystem
+            permissions
+            redirectOnLogin
+            pageRules {
+              id
+              deny
+              match
+              roles
+              path
+              locales
+            }
+          }
+        }
+      }`,
+      { id },
+    );
+    return data.groups.single;
+  }
+
+  async findGroupByName(name: string): Promise<WikiJsGroupInfo | null> {
+    const groups = await this.listGroups();
+    return groups.find((group) => group.name === name) ?? null;
+  }
+
+  async createGroup(name: string): Promise<WikiJsGroupInfo> {
+    const data = await this.graphql<{
+      groups: {
+        create: {
+          responseResult: { succeeded: boolean; message: string };
+          group: WikiJsGroupInfo;
+        };
+      };
+    }>(
+      `mutation CreateGroup($name: String!) {
+        groups {
+          create(name: $name) {
+            responseResult { succeeded message }
+            group { id name isSystem }
+          }
+        }
+      }`,
+      { name },
+    );
+
+    const result = data.groups.create.responseResult;
+    if (!result.succeeded) {
+      throw new Error(result.message ?? `Failed to create group "${name}"`);
+    }
+
+    return data.groups.create.group;
+  }
+
+  async updateGroup(input: UpdateGroupInput): Promise<void> {
+    const data = await this.graphql<{
+      groups: { update: { responseResult: { succeeded: boolean; message: string } } };
+    }>(
+      `mutation UpdateGroup(
+        $id: Int!
+        $name: String!
+        $redirectOnLogin: String!
+        $permissions: [String]!
+        $pageRules: [PageRuleInput]!
+      ) {
+        groups {
+          update(
+            id: $id
+            name: $name
+            redirectOnLogin: $redirectOnLogin
+            permissions: $permissions
+            pageRules: $pageRules
+          ) {
+            responseResult { succeeded message }
+          }
+        }
+      }`,
+      input,
+    );
+
+    const result = data.groups.update.responseResult;
+    if (!result.succeeded) {
+      throw new Error(result.message ?? `Failed to update group "${input.name}"`);
     }
   }
 

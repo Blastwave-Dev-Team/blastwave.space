@@ -46,6 +46,68 @@ body,
   background: transparent !important;
 }
 
+/* Beat Vuetify .v-application .grey.lighten-* (#fafafa) when Wiki.js darkMode is off */
+.v-application .grey.lighten-5 {
+  background-color: var(--bg-deep) !important;
+  background: var(--bg-deep) !important;
+  border-color: transparent !important;
+}
+
+.v-application .grey.lighten-4 {
+  background-color: var(--panel-solid) !important;
+  background: var(--panel-solid) !important;
+  border-color: rgba(0, 229, 255, 0.14) !important;
+}
+
+.v-application .grey.lighten-3 {
+  background-color: var(--panel-solid) !important;
+  background: var(--panel-solid) !important;
+  border-color: rgba(0, 229, 255, 0.14) !important;
+}
+
+.v-application .v-card__actions.grey.lighten-4,
+.v-application .v-card__actions.grey.darken-4-l5 {
+  color: var(--text-muted) !important;
+  background-color: rgba(0, 229, 255, 0.04) !important;
+  background: rgba(0, 229, 255, 0.04) !important;
+  border-color: rgba(0, 229, 255, 0.14) !important;
+}
+
+.v-application .v-card__actions .v-btn,
+.v-application .v-card__actions .v-btn .v-btn__content {
+  color: var(--text-muted) !important;
+}
+
+.v-application .v-card__actions .v-btn:hover,
+.v-application .v-card__actions .v-btn:hover .v-btn__content {
+  color: var(--neon-cyan) !important;
+}
+
+/* Beat Vuetify .theme--light.v-chip (black text/border on dark surfaces) */
+.v-application .theme--light.v-chip,
+.theme--light.v-chip {
+  color: var(--text-muted) !important;
+  background-color: rgba(0, 229, 255, 0.08) !important;
+  background: rgba(0, 229, 255, 0.08) !important;
+  border-color: rgba(0, 229, 255, 0.22) !important;
+}
+
+.v-application .theme--light.v-chip .v-chip__content,
+.theme--light.v-chip .v-chip__content {
+  color: var(--text-muted) !important;
+}
+
+/* Beat Vuetify .theme--light.v-card text (rgba(0,0,0,.6) on dark surfaces) */
+.v-application .theme--light.v-card > .v-card__text,
+.v-application .theme--light.v-card .v-card__text,
+.v-application .theme--light.v-card .v-card__title {
+  color: var(--text-primary) !important;
+}
+
+.v-application .theme--light.v-card .v-card__subtitle {
+  color: var(--text-muted) !important;
+}
+
 a {
   color: var(--neon-cyan);
   text-decoration-color: rgba(0, 229, 255, 0.45);
@@ -607,6 +669,21 @@ select,
   color: var(--neon-cyan) !important;
 }
 
+/* Beat Vuetify .theme--light v-select closed selection text (black on dark fields) */
+.v-application .theme--light.v-select .v-select__selections,
+.v-application .theme--light.v-select .v-select__selections > div,
+.v-application .theme--light.v-select .v-select__selection,
+.v-application .theme--light.v-select .v-select__selection--comma,
+.v-application .theme--light.v-autocomplete .v-select__selections,
+.v-application .theme--light.v-autocomplete .v-select__selections > div,
+.v-application .theme--light.v-input.primary--text .v-select__selections,
+.v-application .theme--light.v-input.primary--text .v-select__selections > div,
+.v-application .theme--light.v-select.primary--text .v-select__selections,
+.v-application .theme--light.v-select.primary--text .v-select__selections > div {
+  color: var(--text-primary) !important;
+  caret-color: var(--neon-cyan) !important;
+}
+
 .search,
 .search-input,
 .search-results,
@@ -632,6 +709,62 @@ select,
 .v-menu__content,
 .v-dialog {
   box-shadow: 0 0 32px rgba(0, 229, 255, 0.12) !important;
+}
+
+/* Header dropdowns (account, page actions, locale) — Wiki.js uses theme--light + grey lighten-5 */
+.v-menu__content.theme--light .v-list,
+.v-menu__content.theme--light .v-list.theme--light {
+  color: var(--text-primary) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.v-menu__content .v-list-item.grey,
+.v-menu__content .v-list-item.grey.lighten-5,
+.v-menu__content .v-list-item.grey.darken-4-l5 {
+  color: var(--text-primary) !important;
+  background: rgba(0, 229, 255, 0.06) !important;
+  background-color: rgba(0, 229, 255, 0.06) !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.14) !important;
+}
+
+.v-menu__content .v-list-item.grey .v-list-item__title {
+  color: var(--text-primary) !important;
+  font-family: var(--font-body);
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.v-menu__content .v-list-item.grey .v-list-item__subtitle {
+  color: var(--text-muted) !important;
+  font-family: var(--font-body);
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.v-menu__content .v-list-item:not(.grey) .v-list-item__title,
+.v-menu__content .v-list-item:not(.grey) .blue-grey--text {
+  color: var(--text-muted) !important;
+}
+
+.v-menu__content .v-list-item:not(.grey):hover,
+.v-menu__content .v-list-item:not(.grey):hover .v-list-item__title,
+.v-menu__content .v-list-item:not(.grey):hover .blue-grey--text {
+  color: var(--neon-cyan) !important;
+  background: rgba(0, 229, 255, 0.08) !important;
+}
+
+.v-menu__content .v-list-item .red--text,
+.v-menu__content .v-list-item:hover .red--text {
+  color: var(--neon-magenta) !important;
+}
+
+.v-menu__content .overline.grey--text {
+  color: var(--neon-cyan) !important;
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
 }
 
 .v-alert {
@@ -787,6 +920,575 @@ footer,
   background: rgba(10, 12, 22, 0.65);
   border-left-color: var(--neon-cyan);
 }
+
+/* ── Tags browse (/t/…) — from client/components/tags.vue ── */
+.tags.v-application,
+.tags .v-application--wrap {
+  background: var(--bg-deep) !important;
+  background-color: var(--bg-deep) !important;
+}
+
+.tags .v-navigation-drawer,
+.tags .theme--dark.v-navigation-drawer,
+.tags .theme--light.v-navigation-drawer {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border-right: 1px solid rgba(0, 229, 255, 0.18) !important;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.08) !important;
+}
+
+.tags .v-navigation-drawer .v-subheader {
+  color: var(--neon-cyan) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  background: transparent !important;
+}
+
+.tags .v-navigation-drawer .v-list-item,
+.tags .v-navigation-drawer .v-list-item__title {
+  color: var(--text-muted) !important;
+  font-family: var(--font-display) !important;
+  letter-spacing: 0.04em !important;
+}
+
+.tags .v-navigation-drawer .v-list-item:hover,
+.tags .v-navigation-drawer .v-list-item:hover .v-list-item__title {
+  color: var(--neon-cyan) !important;
+  background: rgba(0, 229, 255, 0.08) !important;
+  background-color: rgba(0, 229, 255, 0.08) !important;
+}
+
+.tags .v-navigation-drawer .v-list-item .v-icon {
+  color: var(--text-muted) !important;
+}
+
+.tags .v-navigation-drawer .v-list-item .v-icon.primary--text,
+.tags .v-navigation-drawer .v-list-item .v-icon[class*='primary'] {
+  color: var(--neon-cyan) !important;
+}
+
+.tags .v-navigation-drawer .v-divider {
+  border-color: rgba(0, 229, 255, 0.14) !important;
+}
+
+.tags .v-content,
+.tags .v-content.grey,
+.tags .v-content.grey.lighten-3,
+.tags .v-content.grey.darken-4-d5 {
+  color: var(--text-primary) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Selection toolbar (primary) */
+.tags .v-toolbar.primary,
+.tags .v-toolbar[class*='primary'] {
+  color: var(--text-primary) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.18) !important;
+  box-shadow: none !important;
+}
+
+.tags .v-toolbar.primary .overline,
+.tags .v-toolbar.primary .v-icon,
+.tags .v-toolbar.primary .v-btn {
+  color: var(--text-muted) !important;
+}
+
+.tags .v-toolbar.primary .v-chip {
+  color: var(--bg-deep) !important;
+  background: var(--neon-cyan) !important;
+  background-color: var(--neon-cyan) !important;
+  border: 1px solid rgba(0, 229, 255, 0.35) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+}
+
+.tags .v-toolbar.primary .v-chip.primary--text,
+.tags .v-toolbar.primary .v-chip .v-chip__content {
+  color: var(--bg-deep) !important;
+}
+
+.tags .v-toolbar.primary .v-btn.outlined {
+  color: var(--neon-cyan) !important;
+  border-color: rgba(0, 229, 255, 0.45) !important;
+}
+
+.tags .v-toolbar.primary .v-btn.outlined:hover {
+  background: rgba(0, 229, 255, 0.08) !important;
+}
+
+/* Filter toolbar (search, locale, sort) */
+.tags .v-toolbar.grey,
+.tags .v-toolbar.grey.lighten-4,
+.tags .v-toolbar.grey.darken-4-l5 {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.14) !important;
+}
+
+.tags .v-toolbar.grey .overline {
+  color: var(--text-muted) !important;
+  font-family: var(--font-display) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+
+.tags .tags-search .v-input__slot,
+.tags .tags-search.v-text-field--solo > .v-input__control > .v-input__slot,
+.tags .v-toolbar .v-select .v-input__slot {
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+  box-shadow: none !important;
+}
+
+.tags .tags-search input,
+.tags .v-toolbar .v-select input,
+.tags .v-toolbar .v-select .v-select__selection {
+  color: var(--text-primary) !important;
+  caret-color: var(--neon-cyan);
+}
+
+.tags .tags-search .v-label,
+.tags .v-toolbar .v-input__icon .v-icon,
+.tags .v-toolbar .v-icon {
+  color: var(--text-muted) !important;
+}
+
+.tags .tags-search.v-input--is-focused .v-input__slot,
+.tags .v-toolbar .v-input--is-focused .v-input__slot {
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.35) !important;
+}
+
+.tags .v-toolbar .v-divider--vertical {
+  border-color: rgba(0, 229, 255, 0.18) !important;
+}
+
+.tags .v-btn-toggle {
+  background: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+}
+
+.tags .v-btn-toggle .v-btn {
+  color: var(--text-muted) !important;
+}
+
+.tags .v-btn-toggle .v-btn--active,
+.tags .v-btn-toggle .v-btn:hover {
+  color: var(--neon-cyan) !important;
+  background: rgba(0, 229, 255, 0.1) !important;
+}
+
+/* Empty / loading / no-results states */
+.tags .subtitle-2,
+.tags .subtitle-2.grey--text,
+.tags .grey--text.text--darken-1,
+.tags .grey--text {
+  color: var(--text-muted) !important;
+}
+
+.tags .text-center img {
+  opacity: 0.85;
+  filter: brightness(1.15) saturate(0.85);
+}
+
+.tags .v-progress-circular.primary--text,
+.tags .v-progress-circular[class*='primary'] {
+  color: var(--neon-cyan) !important;
+}
+
+/* Result cards */
+.tags .v-card,
+.tags .v-card.grey,
+.tags .v-card.grey.darken-4,
+.tags .v-card.radius-7 {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.08) !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tags .v-card:hover {
+  border-color: rgba(0, 229, 255, 0.35) !important;
+  box-shadow: 0 0 28px rgba(0, 229, 255, 0.14) !important;
+  cursor: pointer;
+}
+
+.tags .v-card .primary--text,
+.tags .v-card strong.primary--text,
+.tags .v-card .body-1 strong {
+  color: var(--neon-cyan) !important;
+}
+
+.tags .v-card .body-2.grey--text {
+  color: var(--text-muted) !important;
+}
+
+.tags .v-card .v-divider {
+  border-color: rgba(0, 229, 255, 0.14) !important;
+}
+
+.tags .v-card .v-chip,
+.tags .v-card .v-chip.grey,
+.tags .v-card .v-chip.grey.lighten-4,
+.tags .v-card .v-chip.grey.darken-3-l5 {
+  color: var(--text-muted) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.14) !important;
+  font-family: var(--font-display) !important;
+  letter-spacing: 0.04em !important;
+}
+
+.tags .v-card .caption {
+  color: var(--text-muted) !important;
+}
+
+/* Pagination */
+.tags .v-pagination .v-pagination__item,
+.tags .v-pagination .v-pagination__navigation {
+  color: var(--text-muted) !important;
+  background: var(--panel-solid) !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(0, 229, 255, 0.14) !important;
+}
+
+.tags .v-pagination .v-pagination__item--active {
+  color: var(--bg-deep) !important;
+  background: var(--neon-cyan) !important;
+  border-color: var(--neon-cyan) !important;
+}
+
+.tags .v-pagination .v-pagination__item:hover,
+.tags .v-pagination .v-pagination__navigation:hover {
+  color: var(--neon-cyan) !important;
+  background: rgba(0, 229, 255, 0.08) !important;
+}
+
+/* ── Admin (/a) & Profile (/p) ── */
+.admin.v-application,
+.admin .v-application--wrap,
+.profile.v-application,
+.profile .v-application--wrap,
+.admin.theme--light .application--wrap {
+  background: var(--bg-deep) !important;
+  background-color: var(--bg-deep) !important;
+}
+
+.admin .v-main.grey.lighten-5,
+.profile .v-content.grey.lighten-5,
+.admin .v-main.grey.darken-5,
+.profile .v-content.grey.darken-4 {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.admin .v-navigation-drawer,
+.admin .admin-sidebar,
+.profile .v-navigation-drawer {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border-right: 1px solid rgba(0, 229, 255, 0.18) !important;
+}
+
+.admin .v-navigation-drawer .v-subheader,
+.profile .v-navigation-drawer .v-subheader {
+  color: var(--neon-cyan) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  background: transparent !important;
+}
+
+.admin .v-card .v-subheader,
+.admin .v-subheader.theme--light,
+.admin .theme--light.v-subheader {
+  color: var(--neon-cyan) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.14) !important;
+}
+
+.admin .v-card .v-list,
+.admin .v-card .v-list.theme--light {
+  color: var(--text-primary) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.admin .v-card .v-list-item,
+.admin .v-card .v-list-item__title {
+  color: var(--text-primary) !important;
+}
+
+.admin .v-card .v-list-item__subtitle,
+.admin .v-card .v-list-item-action-text,
+.admin .v-card .caption {
+  color: var(--text-muted) !important;
+}
+
+.admin .v-navigation-drawer .v-list-item,
+.admin .v-navigation-drawer .v-list-item__title,
+.profile .v-navigation-drawer .v-list-item,
+.profile .v-navigation-drawer .v-list-item__title {
+  color: var(--text-muted) !important;
+  font-family: var(--font-display) !important;
+  letter-spacing: 0.04em !important;
+}
+
+.admin .v-navigation-drawer .v-list-item--active,
+.admin .v-navigation-drawer .v-list-item--active .v-list-item__title,
+.profile .v-navigation-drawer .v-list-item--active,
+.profile .v-navigation-drawer .v-list-item--active .v-list-item__title {
+  color: var(--neon-cyan) !important;
+  background: rgba(0, 229, 255, 0.1) !important;
+  background-color: rgba(0, 229, 255, 0.1) !important;
+}
+
+.admin .v-navigation-drawer .v-list-item:hover,
+.admin .v-navigation-drawer .v-list-item:hover .v-list-item__title,
+.profile .v-navigation-drawer .v-list-item:hover,
+.profile .v-navigation-drawer .v-list-item:hover .v-list-item__title {
+  color: var(--neon-cyan) !important;
+  background: rgba(0, 229, 255, 0.08) !important;
+}
+
+.admin .v-navigation-drawer .v-chip.grey.lighten-5,
+.admin .v-navigation-drawer .v-chip.grey.lighten-4,
+.admin .v-navigation-drawer .v-chip.grey.darken-3-d4 {
+  color: var(--text-muted) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border: 1px solid rgba(0, 229, 255, 0.14) !important;
+}
+
+.admin .v-navigation-drawer .v-chip .grey--text,
+.admin .v-navigation-drawer .v-chip .caption {
+  color: var(--text-muted) !important;
+}
+
+.admin .overline.grey--text,
+.profile .grey--text.subheading {
+  color: var(--text-muted) !important;
+}
+
+.profile .v-toolbar.blue-grey,
+.admin .v-toolbar.blue-grey {
+  color: var(--text-primary) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.18) !important;
+}
+
+/* Admin & profile data tables — beat Vuetify .theme--light.v-data-table */
+.v-application .theme--light.v-data-table,
+.admin .v-data-table,
+.profile .v-data-table {
+  color: var(--text-primary) !important;
+  background: var(--panel) !important;
+  background-color: var(--panel) !important;
+  border: 1px solid rgba(0, 229, 255, 0.18) !important;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.08) !important;
+}
+
+.v-application .theme--light.v-data-table .v-data-table__wrapper,
+.admin .v-data-table .v-data-table__wrapper,
+.profile .v-data-table .v-data-table__wrapper {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.v-application .theme--light.v-data-table table,
+.admin .v-data-table table,
+.profile .v-data-table table {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.v-application .theme--light.v-data-table thead th,
+.admin .v-data-table thead th,
+.profile .v-data-table thead th {
+  color: var(--neon-cyan) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.18) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+
+.v-application .theme--light.v-data-table thead th .v-icon,
+.admin .v-data-table thead th .v-icon,
+.profile .v-data-table thead th .v-icon {
+  color: var(--text-muted) !important;
+}
+
+.v-application .theme--light.v-data-table tbody tr,
+.admin .v-data-table tbody tr,
+.profile .v-data-table tbody tr {
+  color: var(--text-primary) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.v-application .theme--light.v-data-table tbody tr:hover,
+.admin .v-data-table tbody tr.is-clickable:hover,
+.profile .v-data-table tbody tr.is-clickable:hover {
+  background: rgba(0, 229, 255, 0.08) !important;
+  background-color: rgba(0, 229, 255, 0.08) !important;
+}
+
+.v-application .theme--light.v-data-table tbody td,
+.admin .v-data-table tbody td,
+.profile .v-data-table tbody td {
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.1) !important;
+}
+
+.admin .v-data-table .caption,
+.admin .v-data-table .grey--text,
+.profile .v-data-table .caption,
+.profile .v-data-table .grey--text,
+.admin .v-data-table .grey--text.text--darken-2,
+.profile .v-data-table .grey--text.text--darken-2 {
+  color: var(--text-muted) !important;
+}
+
+.admin .v-data-table strong,
+.profile .v-data-table strong {
+  color: var(--text-primary) !important;
+}
+
+.admin .v-card .pa-2.grey.lighten-3,
+.admin .v-card .pa-2.grey.darken-3-d5 {
+  color: var(--text-primary) !important;
+  background: var(--panel-solid) !important;
+  background-color: var(--panel-solid) !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.14) !important;
+}
+
+/* Admin callout boxes (v-card-info) — match wiki is-info / is-danger callouts */
+.admin .v-card-info {
+  border-bottom: none !important;
+}
+
+.admin .v-card-info.is-blue {
+  border-bottom: 1px solid rgba(0, 229, 255, 0.18) !important;
+}
+
+.admin .v-card-info.is-blue .v-card__text,
+.admin .v-card-info.is-blue .v-card__text.blue.lighten-5 {
+  color: var(--text-primary) !important;
+  background: rgba(0, 229, 255, 0.1) !important;
+  background-color: rgba(0, 229, 255, 0.1) !important;
+  border-left: 3px solid var(--neon-cyan) !important;
+}
+
+.admin .v-card-info.is-blue .blue--text.text--darken-3,
+.admin .v-card-info.is-blue .blue--text.text--lighten-4,
+.admin .v-card-info.is-blue span,
+.admin .v-card-info.is-blue .caption {
+  color: var(--text-primary) !important;
+  caret-color: var(--text-primary) !important;
+}
+
+.admin .v-card-info.is-blue .caption a,
+.admin .v-card-info.is-blue a {
+  color: var(--neon-cyan) !important;
+  caret-color: var(--neon-cyan) !important;
+}
+
+.admin .v-card-info.is-blue .v-icon,
+.admin .v-card-info.is-blue .v-icon.blue--text,
+.admin .v-card-info.is-blue .v-icon[class*='blue'] {
+  color: var(--neon-cyan) !important;
+  caret-color: var(--neon-cyan) !important;
+}
+
+.admin .v-card-info.is-red {
+  border-bottom: 1px solid rgba(255, 45, 168, 0.22) !important;
+}
+
+.admin .v-card-info.is-red .v-card__text,
+.admin .v-card-info.is-red .v-card__text.red.lighten-5 {
+  color: var(--text-primary) !important;
+  background: rgba(255, 45, 168, 0.1) !important;
+  background-color: rgba(255, 45, 168, 0.1) !important;
+  border-left: 3px solid var(--neon-magenta) !important;
+}
+
+.admin .v-card-info.is-red .red--text.text--darken-2,
+.admin .v-card-info.is-red .red--text.text--lighten-4,
+.admin .v-card-info.is-red span,
+.admin .v-card-info.is-red .caption {
+  color: var(--text-primary) !important;
+  caret-color: var(--text-primary) !important;
+}
+
+.admin .v-card-info.is-red .v-icon,
+.admin .v-card-info.is-red .v-icon.red--text,
+.admin .v-card-info.is-red .v-icon[class*='red'] {
+  color: var(--neon-magenta) !important;
+  caret-color: var(--neon-magenta) !important;
+}
+
+/* Profile card body — subheaders, auth provider strip (purple lighten-5 + darken-4 text) */
+.profile .v-card .v-card__text,
+.profile .v-card .v-card__text .v-subheader,
+.profile .v-card .v-card__text .subtitle-2 {
+  color: var(--neon-cyan) !important;
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+.profile .v-card .v-card__text .v-toolbar.purple.lighten-5,
+.profile .v-card .v-card__text .v-toolbar.grey.darken-2,
+.profile .v-card .v-card__text .v-toolbar.purple--text {
+  color: var(--text-primary) !important;
+  background: rgba(255, 45, 168, 0.08) !important;
+  background-color: rgba(255, 45, 168, 0.08) !important;
+  border: 1px solid rgba(255, 45, 168, 0.22) !important;
+  border-radius: 4px;
+}
+
+.profile .v-card .v-card__text .v-toolbar .subheading,
+.profile .v-card .v-card__text .purple--text.text--darken-4,
+.profile .v-card .v-card__text .grey--text.text--lighten-1 {
+  color: var(--text-primary) !important;
+}
+
+.profile .v-card .v-card__text .v-toolbar .v-icon.purple--text,
+.profile .v-card .v-card__text .v-toolbar .v-icon[class*='purple'],
+.profile .v-card .v-card__text .v-toolbar .v-icon.grey--text {
+  color: var(--neon-magenta) !important;
+}
+
+.v-application .purple.lighten-5 {
+  background-color: rgba(255, 45, 168, 0.08) !important;
+  background: rgba(255, 45, 168, 0.08) !important;
+  border-color: rgba(255, 45, 168, 0.22) !important;
+}
+
+/* Login: wiki-theme/login.css (nginx on /login). Tags/admin/profile: nginx injects this file — those pug templates skip injectCSS. */
 
 /* MediaWiki HTML imports — see mediawiki-compat.css */
 

@@ -25,6 +25,7 @@ Commands:
   fix anchors [--source=<preset|url>] [--only=<path>] [--dry-run]
 
   deploy theme
+  groups setup-player [--dry-run]
   tag add <page-path> <tag> [tag...]
 
 Options:
@@ -93,6 +94,10 @@ function resolveRoute(argv: string[]): CommandRoute {
 
   if (first === 'deploy' && second === 'theme') {
     return { modulePath: './commands/deploy-theme.js', argv: rest };
+  }
+
+  if (first === 'groups' && second === 'setup-player') {
+    return { modulePath: './commands/setup-player-group.js', argv: rest };
   }
 
   if (first === 'tag' && second === 'add') {

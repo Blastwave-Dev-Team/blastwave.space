@@ -99,7 +99,7 @@ async function getThemeConfig(graphqlUrl: string, apiKey: string): Promise<Theme
 }
 
 export async function run(argv: string[]): Promise<void> {
-  const context = parseCliContext(argv);
+  const context = parseCliContext(argv, { requireSource: false });
   const current = await getThemeConfig(context.wikiGraphqlUrl, context.wikiApiKey);
   const tocPosition =
     process.env.WIKIJS_TOC_POSITION ?? current.tocPosition ?? 'right';

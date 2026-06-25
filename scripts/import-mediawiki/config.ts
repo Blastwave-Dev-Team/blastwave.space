@@ -43,6 +43,7 @@ export function parseCliContext(
   options?: {
     defaultSource?: string;
     requireWikiKey?: boolean;
+    requireSource?: boolean;
   },
 ): CliContext {
   const dryRun = argv.includes('--dry-run');
@@ -50,7 +51,10 @@ export function parseCliContext(
     argv.find((arg) => arg.startsWith('--source='))?.split('=')[1] ??
     argv.find((arg) => arg.startsWith('--source-api='))?.split('=')[1];
 
-  const source = resolveSource(sourceArg, options?.defaultSource);
+  const source =
+    options?.requireSource === false
+      ? { name: 'none', apiUrl: '' }
+      : resolveSource(sourceArg, options?.defaultSource);
 
   const delayArg = argv.find((arg) => arg.startsWith('--delay-ms='))?.split('=')[1];
   const folderArg = argv.find((arg) => arg.startsWith('--folder-id='))?.split('=')[1];
