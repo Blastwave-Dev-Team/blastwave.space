@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Deploy Wiki.js + book-proxy from repo checkout on the droplet.
+# Deploy Wiki.js + book-proxy + api from repo checkout on the droplet.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -14,7 +14,7 @@ if [[ ! -f .env ]]; then
   exit 1
 fi
 
-docker compose build book-proxy
+docker compose build book-proxy api
 docker compose up -d
 
 echo "Services started. Configure nginx (infra/nginx/blastwave.conf) and DNS, then run setup-ssl.sh."

@@ -29,5 +29,6 @@ public/assets/bg-source.mp4
 # Deployment secrets
 infra/.env
 book-proxy/node_modules
+api/node_modules
 scripts/import-mediawiki/node_modules
 .env
