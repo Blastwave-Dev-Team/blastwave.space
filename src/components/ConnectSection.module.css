@@ -63,6 +63,16 @@
   margin-bottom: 1.5rem;
 }
 
+.flexContainer {
+  display: flex;
+  width: 100%;
+}
+
+.flexChild {
+  /*display: flex;*/
+  flex: 1;
+}
+
 @media (max-width: 640px) {
   .panel {
     padding: 1.75rem 1.25rem;

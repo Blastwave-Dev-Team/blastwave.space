@@ -13,4 +13,7 @@ COPY package.json package-lock.json* ./
 RUN npm install --omit=dev
 COPY --from=build /app/dist ./dist
 EXPOSE 3002
+# CHANGE THIS IN PRODUCTION TO GAME.BLASTWAVE.SPACE
+ENV API_SERVER=5.78.184.148
+ENV API_PORT=1338
 CMD ["node", "dist/index.js"]
