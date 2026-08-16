@@ -66,10 +66,10 @@
 .flexContainer {
   display: flex;
   width: 100%;
+  gap: 1.5rem;
 }
 
 .flexChild {
-  /*display: flex;*/
   flex: 1;
 }
 
@@ -85,5 +85,9 @@
   .actions a,
   .actions button {
     width: 100%;
+  }
+
+  .flexContainer {
+    flex-direction: column;
   }
 }

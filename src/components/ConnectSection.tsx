@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   BYOND_URL,
   SERVER_ADDRESS,
@@ -8,17 +9,17 @@ import { useFadeIn } from '../hooks/useFadeIn';
 import { CopyButton } from './CopyButton';
 import styles from './ConnectSection.module.css';
 import copyStyles from './CopyButton.module.css';
-import { useState, useEffect } from "react";
 
-interface SS13Status {
-  version : string | undefined,
-  error : string | undefined,
-  msg : string | undefined,
-  players : string,
-  popcap : string,
-  map_name : string,
-  round_id : string
-}
+type RoundState =
+  | { kind: 'loading' }
+  | { kind: 'ok'; players: string; popcap: string; map_name: string }
+  | { kind: 'down' };
+
+type StatusPayload = {
+  players?: string;
+  popcap?: string;
+  map_name?: string;
+};
 
 function InfoSection() {
   return (
@@ -36,32 +37,80 @@ function InfoSection() {
         <CopyButton value={SERVER_ADDRESS} />
       </div>
     </div>
-  )
+  );
+}
+
+function formatPlayers(players: string, popcap: string): string {
+  if (!popcap || popcap === '0') {
+    return players;
+  }
+  return `${players}/${popcap}`;
+}
+
+function RoundInfoBody({ state }: { state: RoundState }) {
+  switch (state.kind) {
+    case 'loading':
+      return <p>Checking server…</p>;
+    case 'ok':
+      return (
+        <div>
+          <p>Map: {state.map_name}</p>
+          <p>Players: {formatPlayers(state.players, state.popcap)}</p>
+        </div>
+      );
+    case 'down':
+      return <p>Server offline.</p>;
+    default: {
+      const _exhaustive: never = state;
+      return _exhaustive;
+    }
+  }
 }
 
 function RoundInfo() {
-  const [status, setStatus] = useState<SS13Status>()
+  const [state, setState] = useState<RoundState>({ kind: 'loading' });
+
   useEffect(() => {
-    fetch("/api/status").then((res) => {
-      if (res.status == 200) {
-        return res.json()
-      }
-    }).then((res : SS13Status) => {
-      if (!res.error)
-        setStatus(res)
-    })
-  }, [])
+    let cancelled = false;
+
+    fetch('/api/status')
+      .then(async (res) => {
+        if (!res.ok) {
+          throw new Error('status request failed');
+        }
+        return res.json() as Promise<StatusPayload>;
+      })
+      .then((data) => {
+        if (cancelled) {
+          return;
+        }
+        if (typeof data.players !== 'string' || typeof data.map_name !== 'string') {
+          setState({ kind: 'down' });
+          return;
+        }
+        setState({
+          kind: 'ok',
+          players: data.players,
+          popcap: typeof data.popcap === 'string' ? data.popcap : '',
+          map_name: data.map_name,
+        });
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setState({ kind: 'down' });
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <div className={styles.flexChild}>
-      {status ?
-        <div>
-          <p>Map: {status?.map_name}</p>
-          <p>Players: {status?.players}/{status?.popcap}</p>
-        </div> : 
-        <p>Server offline.</p>
-      }
+      <RoundInfoBody state={state} />
     </div>
-  )
+  );
 }
 
 export function ConnectSection() {

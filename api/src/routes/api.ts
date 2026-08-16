@@ -1,7 +1,28 @@
 import { Router } from 'express';
-import { ByondTopic } from '../lib/topic.js'
+import { ByondTopic } from '../lib/topic.js';
+
+const STATUS_FIELDS = ['players', 'popcap', 'map_name'] as const;
 
 export const apiRouter = Router();
+
+function readGameConfig(): { host: string; port: number } {
+  const port = Number(process.env.GAME_PORT ?? 1338);
+  return {
+    host: process.env.GAME_HOST ?? 'game.blastwave.space',
+    port: Number.isFinite(port) && port > 0 ? port : 1338,
+  };
+}
+
+function pickStatus(params: URLSearchParams): Record<string, string> {
+  const status: Record<string, string> = {};
+  for (const field of STATUS_FIELDS) {
+    const value = params.get(field);
+    if (value != null) {
+      status[field] = value;
+    }
+  }
+  return status;
+}
 
 apiRouter.get('/', (_req, res) => {
   res.json({
@@ -10,22 +31,16 @@ apiRouter.get('/', (_req, res) => {
   });
 });
 
-
-apiRouter.get('/status', (_req, res) => {
-  res.header('Access-Control-Allow-Origin', '*'); 
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  ByondTopic(process.env.API_SERVER || 'game.blastwave.space', parseInt(process.env.API_PORT || "1338", 10), "status")
-    .then((tres : string | number) => {
-      if (typeof tres != 'string') {
-        res.status(400).json({error: true, msg: 'internal error: tres should be string'})
-        return
-      }
-      const params = new URLSearchParams(tres);
-      const obj = Object.fromEntries(params);
-      res.json(obj);
-    })
-    .catch((err : Error) => {
-      res.status(400).json({error: true, msg: err.message})
-    })
-})
+apiRouter.get('/status', async (_req, res) => {
+  const { host, port } = readGameConfig();
+  try {
+    const tres = await ByondTopic(host, port, 'status');
+    if (typeof tres !== 'string') {
+      res.status(502).json({ error: true });
+      return;
+    }
+    res.json(pickStatus(new URLSearchParams(tres)));
+  } catch {
+    res.status(502).json({ error: true });
+  }
+});

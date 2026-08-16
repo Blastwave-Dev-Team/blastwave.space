@@ -10,6 +10,7 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INFRA_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
+install -m 644 "${INFRA_DIR}/nginx/api-cache.conf" /etc/nginx/conf.d/blastwave-api-cache.conf
 install -m 644 "${INFRA_DIR}/nginx/blastwave.conf" /etc/nginx/sites-available/blastwave
 ln -sf /etc/nginx/sites-available/blastwave /etc/nginx/sites-enabled/blastwave
 rm -f /etc/nginx/sites-enabled/default
