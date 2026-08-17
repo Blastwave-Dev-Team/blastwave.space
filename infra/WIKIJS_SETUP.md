@@ -31,6 +31,7 @@
 
    ```bash
    sudo infra/scripts/publish-site.sh
+   sudo install -m 644 infra/nginx/api-cache.conf /etc/nginx/conf.d/blastwave-api-cache.conf
    sudo install -m 644 infra/nginx/blastwave.conf /etc/nginx/sites-available/blastwave && sudo nginx -t && sudo systemctl reload nginx
    ```
 
