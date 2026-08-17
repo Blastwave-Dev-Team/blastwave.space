@@ -2,6 +2,7 @@
 export const HTML_IMPORT_PAGES: Record<string, string> = {
   Guide_to_chemistry: 'guide-to-chemistry',
   Guide_to_medicine: 'guide-to-medicine',
+  Infections: 'infections',
   Surgery: 'surgery',
   Guide_to_food: 'guide-to-food',
   Guide_to_drinks: 'guide-to-drinks',
@@ -16,7 +17,8 @@ export const TEXTBOOK_PAGES: Record<string, string> = {
   Guide_to_construction: 'guide-to-construction',
   Guide_to_engineering: 'guide-to-engineering',
   Space_Law: 'space-law',
-  Corporate_Regulations: 'corporate-regulations',
+  Corporate_Regulations:
+    'guides/security-and-command-guides/security/space-law',
   Infections: 'infections',
   Guide_to_telescience: 'guide-to-telescience',
   Hacking: 'hacking',
@@ -47,7 +49,7 @@ export const PAGE_DESCRIPTIONS: Record<string, string> = {
   'guide-to-engineering':
     'Station engineering systems, power, maintenance, and departmental equipment.',
   'space-law': 'Space Law, crime categories, and sentencing guidelines for security.',
-  'corporate-regulations':
+  'guides/security-and-command-guides/security/space-law':
     'Nanotrasen corporate regulations for station law, order, and procedure.',
   infections: 'Virology, diseases, symptoms, and infection treatment.',
   'guide-to-telescience': 'Bluespace teleportation science and telescience equipment.',
