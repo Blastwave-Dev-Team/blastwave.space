@@ -76,6 +76,7 @@ export const RULES: RuleEntry[] = [
       'Your character is a unique existence separate from yourself who exists in a different reality. Act within this framework.',
       'Names should either be reasonable for a real, median human, or follow naming conventions provided to a race. Clowns/Mimes/Silicons can be sillier, but nobody should reference pre-existing characters or people.',
       'Don\'t reference OOC terms in IC ("round/antag/greentext", leetspeak, etc)',
+      'Additionally, ERP is not allowed. We\'re not here for that. Full stop.',
       'Ghosts can relax this rule for as long as they\'re ghosts, and talk about the current round\'s events with anyone. They cannot take information gained while they were ghosts back into the round when they enter it again.',
       'Once the round ends, IC/OOC rules are free to be ignored.',
       'As in Rule 3, your character\'s personality or motivations are liable to be modified by outside forces without your consent, such as forceborging or "mind control" from various antag types. So long as such applied directives are in-character from the perpetrator\'s standpoint, do your best to follow them. For forceborging in particular, you are subject to SILICON RULES listed at the bottom.',

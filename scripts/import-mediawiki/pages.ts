@@ -7,6 +7,7 @@ export const HTML_IMPORT_PAGES: Record<string, string> = {
   Guide_to_food: 'guide-to-food',
   Guide_to_drinks: 'guide-to-drinks',
   Tactical_Game_Cards: 'tactical-game-cards',
+  Guide_to_Mediguns: 'guide-to-mediguns',
 };
 
 export const HTML_IMPORT_PATHS = new Set(Object.values(HTML_IMPORT_PAGES));
